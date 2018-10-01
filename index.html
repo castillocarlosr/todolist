@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <title>The List Keeper</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+</head>
+
+<body>
+    <header>
+    <h1><img src="img/logo.png"></h1>
+    <div id="characterIcon">
+        <img src="https://via.placeholder.com/80x110">
+        <a href="character.html" class="characterPage">characterIcon "Holder"</a> 
+        <h2 id="quoteHeader" src="https://via.placeholder.com/50x70" >Motivational Quote</h2>
+    </div>    
+    </header>
+
+<main>
+    <div id="list" class="bothList">
+            <h3>Daily tasks to do</h3>
+            <input type="checkbox" name="taskDaily" value="task1">
+    </div>
+
+    <div id="" class="goalsList">
+        <form id="daily">
+            <fieldset>
+                <legend> Daily tasks </legend>
+    
+                <label for="taskDaily">Daily Task:</label>
+                <input type="text" name="taskDaily">
+
+                <!-- Below is the Javascript way of adding tasks.  Above is the HTML way. -->
+                <!-- <div  class="addTask">
+                    <labelfor="place">Task:</label>
+                </div>
+                    <input class="addTask" type="text" name="addTask"> -->
+    
+                <button>Add daily task</button>
+            </fieldset>
+        </form>
+    </div>
+    <div id="" class="goalsList">
+        <form id="longTerm">
+            <fieldset>
+                <legend> To-Do tasks</legend>
+    
+                <label for="taskLong">non-daily Task: </label>
+                <input type="text" name="taskLong">
+    
+                <button>Add a non-daily task</button>
+            </fieldset>
+        </form>
+    </div>
+</main>
+
+<script src="app.js"></script>
+<div class="footerDiv">
+    <footer>  
+        <a href="suggestion.html" id="suggestionFooter" class="footerPage">Goal Suggestions</a> 
+        <a href="getStarted.html" id="startedFooter" class="footerPage">Get started</a> 
+    </footer>
+</div>
+
+</body>
+
+</html>
