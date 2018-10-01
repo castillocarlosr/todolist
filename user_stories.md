@@ -1,10 +1,10 @@
-*As teammembers we want to work together with minimal to no conflict.
+*As teammembers we want to work together with minimal to no conflict to avoid issues.
 
-*As people we wish to respect eachother.
+*As people we wish to respect eachother to make them feel safe.
 
 *As coders we wish to write code that is easy for my coworkes to work with.
 
-*As teammembers we want to create an awesome app to MAKE users amazed.
+*As teammembers we want to create an awesome app to amaze users.
 
 *As developers we want to code with clean indendation and syntax to make our code readable.
 
