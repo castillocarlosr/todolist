@@ -43,7 +43,6 @@ a:hover {
 #logo {
   padding: 20px;
   text-align: center;
-
 }
 
 #avatar {
@@ -105,10 +104,10 @@ a:hover {
 .modal-content label {
   display: block;
   font-family: 'Nothing You Could Do', cursive; 
+  font-size: 1.2em;
+  padding-bottom: 10px;
   padding-top: 20px;
 }
-
-/* The Close Button */
 
 .close {
   color: #aaa;
