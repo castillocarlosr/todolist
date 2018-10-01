@@ -1,8 +1,14 @@
+canvas{
+  background: #ecddce;
+  margin: 90%;
+}
+
 body {
   color: #272f3d;
   margin:auto;
   width: 90%;
 }
+
 
 header {
   background-color: #ecddce;
