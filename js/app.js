@@ -1,7 +1,7 @@
 'use strict';
 
 var addDailyButton = document.getElementById('dailyButton');
-var addToDoButton = document.getElementById('')
+var addToDoButton = document.getElementById('todoButton');
 
 //Need a task object; should use a constructor
 function Task(taskName, taskDescript, taskType, dueDate, pointValue){
@@ -88,7 +88,8 @@ generateTasks();
 
 //function updateDaily(){
 
-}
+//};
+
 //  change the object to delete the list & add the new update list.
 dailyButton.addEventLister('submit', updateDaily);
 
@@ -97,4 +98,9 @@ dailyButton.addEventLister('submit', updateDaily);
 
 //need a handler to update non-daily To Do list
 //  change the object to delete the list & add the new update list.
+//function updateToDo(){
+
+//};
+
+addToDoButton.addEventLister('submit', updateToDo);
 
