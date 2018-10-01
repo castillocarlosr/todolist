@@ -2,6 +2,8 @@
 
 var addDailyButton = document.getElementById('dailyButton');
 var addToDoButton = document.getElementById('todoButton');
+var dailyListHead = document.getElementById('dailyUL');
+var todoListHead = document.getElementById('todoUL');
 
 //Need a task object; should use a constructor
 function Task(taskName, taskDescript, taskType, dueDate, pointValue){
@@ -83,6 +85,39 @@ function generateTasks(){
 
 generateTasks();
 
+function renderDaily(){
+  for(let i = 0; i < Task.allTasks.length; i++){
+    if(Task.allTasks[i].taskType === 'daily'){
+      addElement('li',Task.allTasks[i].name,dailyListHead);
+    }
+    else{
+      console.log('Not a daily task - type is: ' + Task.allTasks[i].taskType);
+    }
+  }
+}
+renderDaily();
+
+function renderToDo(){
+  for(let i = 0; i < Task.allTasks.length; i++){
+    if(Task.allTasks[i].taskType === 'toDo'){
+      addElement('li',Task.allTasks[i].name,todoListHead);
+    }
+    else{
+      console.log('Not a toDo task - type is: ' + Task.allTasks[i].taskType);
+    }
+  }
+}
+renderToDo();
+
+function addElement(tag,elementContent,parentElement){
+  let newElement = document.createElement(tag);
+  if(elementContent){
+    let newElementContent = document.createTextNode(elementContent);
+    newElement.appendChild(newElementContent);
+  }
+  parentElement.appendChild(newElement);
+  return(newElement);
+}
 
 //need a handler to update daily task list
 
