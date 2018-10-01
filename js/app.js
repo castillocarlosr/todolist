@@ -9,7 +9,6 @@ function Task(taskName, taskDescript, taskType, dueDate, pointValue){
   this.value = pointValue;
   Task.allTasks.push(this);
 }
-
 Task.allTasks = [];
 
 
@@ -22,13 +21,15 @@ function buildTasks(){
 
 function addTask(taskName, taskDescript, taskType, dueDate, pointValue){
   //check for uniqueness for all tasks, regardless of type 
-  if( !( getTaskIndexByName(taskName) ) ){
+  let index = getTaskIndexByName(taskName);
+  if( !( index || index === 0 ) ){
     new Task(taskName, taskDescript, taskType, dueDate, pointValue);
     localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
   }
   else{
     //How do we need to handle duplicate task names?
     console.log('Task name already in use, use something else');
+
   }
 }
 
@@ -78,3 +79,12 @@ function generateTasks(){
 }
 
 generateTasks();
+
+
+//need a handler to update daily task list
+//  change the object to delete the list & add the new update list.
+
+
+//need a handler to update non-daily To Do list
+//  change the object to delete the list & add the new update list.
+
