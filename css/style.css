@@ -10,7 +10,33 @@ header {
 
 main {
   background-color: #b4b28c;
+  min-height: 200px;
+}
 
+legend {
+  font-size: 1.3em;
+  font-family: 'Nothing You Could Do', cursive;
+  padding-bottom: 20px;
+}
+
+footer {
+  background-color: #ecddce;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+
+footer p {
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  color: #7a8aa8;
+}
+
+a:hover {
+  color: #ecddce;
 }
 
 #logo {
@@ -33,15 +59,21 @@ main {
 }
 
 #dailies {
+  background-color: #b9abaa;
   float:left;
+  margin-left: 20px;
+  margin-top: 20px;
   padding: 20px;
-  width: 40%;
+  width: 43%;
 }
 
 #todos {
+  background-color: #b9abaa;
   float:right;
+  margin-right: 20px;
+  margin-top: 20px;
   padding: 20px;
-  width: 40%;
+  width: 43%;
 }
 
 .clear {
