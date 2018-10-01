@@ -24,11 +24,9 @@
 
 <main>
     <div id="dailies" class="clear" class="goalsList">
-        <ul id="dailyUL">
-        </ul>
         <form>
             <fieldset>
-                <legend> Daily tasks </legend>
+                <legend id="dailyLegend"> Daily tasks </legend>
     
                 <label for="taskDaily">
                     <input id="dailyButton" type="submit" value="Add Daily">
@@ -63,18 +61,16 @@
 
     </div>
     <div id="todos" class="goalsList">
-        <ul id="todoUL">
-        </ul>
+
         <form id="longTerm">
             <fieldset>
-                <legend>To-Dos</legend>
+                <legend id="todoLegend">To-Dos</legend>
     
                 <label for="taskLong">
                     <input id="todoButton" type="submit" value="Add To Do">
                 </label>
             </fieldset>
         </form>
-
         <!-- The Daily Modal -->
         <div id="todoModal" class="modal">
 

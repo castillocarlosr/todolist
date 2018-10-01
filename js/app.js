@@ -1,9 +1,9 @@
 'use strict';
 
-var addDailyButton = document.getElementById('dailyButton');
-var addToDoButton = document.getElementById('todoButton');
-var dailyListHead = document.getElementById('dailyUL');
-var todoListHead = document.getElementById('todoUL');
+//var addDailyButton = document.getElementById('dailyButton');
+//var addToDoButton = document.getElementById('todoButton');
+var dailyListHead = document.getElementById('dailyLegend');
+var todoListHead = document.getElementById('todoLegend');
 
 //Need a task object; should use a constructor
 function Task(taskName, taskDescript, taskType, dueDate, pointValue){
@@ -86,9 +86,13 @@ function generateTasks(){
 generateTasks();
 
 function renderDaily(){
+  let fieldsetElement = addElement('fieldset','',dailyListHead);
   for(let i = 0; i < Task.allTasks.length; i++){
     if(Task.allTasks[i].taskType === 'daily'){
-      addElement('li',Task.allTasks[i].name,dailyListHead);
+      let labelElement = addElement('label', Task.allTasks[i].name, fieldsetElement);
+      let inputElement = addElement('input','',labelElement);
+      inputElement.setAttribute('type', 'checkbox');
+      inputElement.setAttribute('value', Task.allTasks[i].name);
     }
     else{
       console.log('Not a daily task - type is: ' + Task.allTasks[i].taskType);
@@ -98,9 +102,13 @@ function renderDaily(){
 renderDaily();
 
 function renderToDo(){
+  let fieldsetElement = addElement('fieldset','',todoListHead);
   for(let i = 0; i < Task.allTasks.length; i++){
     if(Task.allTasks[i].taskType === 'toDo'){
-      addElement('li',Task.allTasks[i].name,todoListHead);
+      let labelElement = addElement('label', Task.allTasks[i].name, fieldsetElement);
+      let inputElement = addElement('input', '', labelElement);
+      inputElement.setAttribute('type', 'checkbox');
+      inputElement.setAttribute('value', Task.allTasks[i].name);
     }
     else{
       console.log('Not a toDo task - type is: ' + Task.allTasks[i].taskType);
