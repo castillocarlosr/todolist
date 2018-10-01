@@ -55,6 +55,18 @@ function updateTask(taskName, taskDescript, taskType, dueDate, pointValue){
   }
 }
 
+function removeTask(taskName){
+  let index = getTaskIndexByName(taskName);
+  if( index || index === 0 ){
+    let removedTask = Task.allTasks.splice(index,1);
+    console.log('removing ' + removedTask);
+    localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
+  }
+  else{
+    console.log('No task with that name exists.');
+  }
+}
+
 function generateTasks(){
   var myTasks = localStorage.getItem('tasks');
   if(!myTasks || myTasks.length === 0){
