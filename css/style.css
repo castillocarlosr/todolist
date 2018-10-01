@@ -12,12 +12,13 @@ header {
 
 main {
   background-color: #b4b28c;
-  min-height: 200px;
+  min-height: 600px;
 }
 
 legend {
   font-size: 1.3em;
   font-family: 'Nothing You Could Do', cursive;
+  font-weight: bold;
   padding-bottom: 20px;
 }
 
@@ -68,6 +69,17 @@ a:hover {
   width: 43%;
 }
 
+#dailies label {
+  display: inline-block; 
+  padding-top: 10px;
+  width: 90%;
+}
+
+#dailies input {
+  float:left;
+  margin-right: 10px;
+}
+
 #todos {
   background-color: #b9abaa;
   box-shadow: 5px 10px 5px #272f3d; 
@@ -76,6 +88,16 @@ a:hover {
   margin-top: 20px;
   padding: 20px;
   width: 43%;
+}
+
+#todos input {
+  float:left;
+  margin-right: 10px;
+}
+
+#todos label {
+  display: inline-block; 
+  padding-top: 10px;
 }
 
 .clear {
