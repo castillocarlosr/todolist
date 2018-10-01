@@ -60,6 +60,7 @@ a:hover {
 
 #dailies {
   background-color: #b9abaa;
+  box-shadow: 5px 10px 5px #272f3d;
   float:left;
   margin-left: 20px;
   margin-top: 20px;
@@ -69,6 +70,7 @@ a:hover {
 
 #todos {
   background-color: #b9abaa;
+  box-shadow: 5px 10px 5px #272f3d; 
   float:right;
   margin-right: 20px;
   margin-top: 20px;
