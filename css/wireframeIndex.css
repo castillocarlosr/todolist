@@ -43,6 +43,26 @@ footer {
   margin-left: 20px;
 }
 
+#character {
+  padding: 20px;
+  float: left;
+}
+
+#stats {
+  width: 50%;
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 400px;
+  padding: 20px;
+  background-color: gray;
+}
+
+#stats li {
+  width: 90%;
+}
+
 li {
   width: 200px;
   height: 50px;
