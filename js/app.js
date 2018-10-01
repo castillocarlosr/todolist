@@ -22,7 +22,7 @@ function buildTasks(){
 
 function addTask(taskName, taskDescript, taskType, dueDate, pointValue){
   //check for uniqueness for all tasks, regardless of type 
-  if(bTaskUnique(taskName)){
+  if( !( getTaskIndexByName(taskName) ) ){
     new Task(taskName, taskDescript, taskType, dueDate, pointValue);
     localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
   }
@@ -32,15 +32,27 @@ function addTask(taskName, taskDescript, taskType, dueDate, pointValue){
   }
 }
 
-function bTaskUnique(taskName){
-  let bResult = true;
+function getTaskIndexByName(taskName){
   for(let i = 0; i < Task.allTasks.length; i++){
     if(Task.allTasks[i].name === taskName){
-      bResult = false;
-      break;
+      return i;
     }
   }
-  return bResult;
+}
+
+function updateTask(taskName, taskDescript, taskType, dueDate, pointValue){
+  let index = getTaskIndexByName(taskName);
+  if( index || index === 0 ){
+    Task.allTasks[index].description = taskDescript;
+    Task.allTasks[index].taskType = taskType;
+    Task.allTasks[index].dueDate = dueDate;
+    Task.allTasks[index].value = pointValue;
+    localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
+  }
+  else{
+    //How do we need to handle updating a non-existent task?
+    console.log('Task does not exist; try adding a task with that name instead');
+  }
 }
 
 function generateTasks(){
