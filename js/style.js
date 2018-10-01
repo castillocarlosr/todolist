@@ -1,3 +1,4 @@
+/////////to make the daily form appear//////////////
 // Get the daily modal
 var modal = document.getElementById('dailyModal');
 
@@ -25,6 +26,7 @@ window.onclick = function(event) {
     }
 }
 
+////////////to make the todo form appear////////////////
 // Get the todo modal
 var todoModal = document.getElementById('todoModal');
 
