@@ -1,5 +1,8 @@
 'use strict';
 
+var addDailyButton = document.getElementById('dailyButton');
+var addToDoButton = document.getElementById('')
+
 //Need a task object; should use a constructor
 function Task(taskName, taskDescript, taskType, dueDate, pointValue){
   this.name = taskName;
@@ -15,7 +18,7 @@ Task.allTasks = [];
 function buildTasks(){
   new Task('task 1', 'task 1 description - synch', 'daily', 'now', 1);
   new Task('task 2', 'task 2 description - synch', 'daily', 'soon', 5);
-  new Task('task 3', 'task 3 description - asynch', 'toDo', 'later', 5);
+  new Task('task 3', 'task 3 description - asynch', 'toDo', 'later', 8);
   localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
 }
 
@@ -82,7 +85,14 @@ generateTasks();
 
 
 //need a handler to update daily task list
+
+//function updateDaily(){
+
+}
 //  change the object to delete the list & add the new update list.
+dailyButton.addEventLister('submit', updateDaily);
+
+
 
 
 //need a handler to update non-daily To Do list
