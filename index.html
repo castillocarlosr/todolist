@@ -35,6 +35,38 @@
                 </label>
             </fieldset>
         </form>
+
+        <!-- The Modal -->
+        <div id="dailyModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form>
+                <fieldset>
+                    <label> Task Name:
+                        <input type="text" name="taskname">
+                    </label>
+                    <label> Task Description:
+                        <input type="text" name="description">
+                    </label>
+                    <label> Due Date:
+                        <input type="text" name="duedate">
+                    </label>
+                    <label>Difficulity
+                        <select name="difficulity">
+                            <option value="easy">easy</option>
+                            <option value="medium">medium</option>
+                            <option value="hard">hard</option>
+                        </select>
+                    </label>
+                    <input type="submit" value="Submit">
+                </fieldset>
+            </form>
+        </div>
+  
+    </div>
+
     </div>
     <div id="todos" class="goalsList">
         <ul id="todoUL">
@@ -55,7 +87,8 @@
         <p><a href="suggestion.html" id="suggestionFooter" class="footerPage">Goal Suggestions</a></p> 
         <p><a href="getStarted.html" id="startedFooter" class="footerPage">Get started</a></p>
     </footer>
-    <script src="app.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/style.js"></script>
 </div>
 
 </body>

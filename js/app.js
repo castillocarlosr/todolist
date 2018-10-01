@@ -90,17 +90,17 @@ generateTasks();
 
 //};
 
-//  change the object to delete the list & add the new update list.
-dailyButton.addEventLister('submit', updateDaily);
+// //  change the object to delete the list & add the new update list.
+// dailyButton.addEventLister('submit', updateDaily);
 
 
 
 
-//need a handler to update non-daily To Do list
-//  change the object to delete the list & add the new update list.
-//function updateToDo(){
+// //need a handler to update non-daily To Do list
+// //  change the object to delete the list & add the new update list.
+// //function updateToDo(){
 
-//};
+// //};
 
-addToDoButton.addEventLister('submit', updateToDo);
+// addToDoButton.addEventLister('submit', updateToDo);
 
