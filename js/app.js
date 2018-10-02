@@ -1,7 +1,7 @@
 'use strict';
 
-//var addDailyButton = document.getElementById('dailyButton');
-//var addToDoButton = document.getElementById('todoButton');
+var addDaily = document.getElementById('dailyForm');
+var addToDo = document.getElementById('todoForm');
 var dailyListHead = document.getElementById('dailyLegend');
 var todoListHead = document.getElementById('todoLegend');
 
@@ -25,7 +25,7 @@ function buildTasks(){
 }
 
 function addTask(taskName, taskDescript, taskType, dueDate, pointValue){
-  //check for uniqueness for all tasks, regardless of type 
+  //check for uniqueness for all tasks, regardless of type
   let index = getTaskIndexByName(taskName);
   if( !( index || index === 0 ) ){
     new Task(taskName, taskDescript, taskType, dueDate, pointValue);
@@ -129,21 +129,24 @@ function addElement(tag,elementContent,parentElement){
 
 //need a handler to update daily task list
 
-//function updateDaily(){
-
-//};
+function updateDaily(event){
+  console.log('Before the preventDefault');
+  event.preventDefault();
+  console.log('updateDaily submitted');
+}
 
 // //  change the object to delete the list & add the new update list.
-// dailyButton.addEventLister('submit', updateDaily);
+addDaily.addEventListener('submit', updateDaily);
 
 
 
 
-// //need a handler to update non-daily To Do list
-// //  change the object to delete the list & add the new update list.
-// //function updateToDo(){
+//need a handler to update non-daily To Do list
+//  change the object to delete the list & add the new update list.
+function updateToDo(event){
+  console.log('Before the preventDefault');
+  event.preventDefault();
+  console.log('updateToDo submitted');
+}
 
-// //};
-
-// addToDoButton.addEventLister('submit', updateToDo);
-
+addToDo.addEventListener('submit', updateToDo);
