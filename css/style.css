@@ -28,6 +28,12 @@ legend {
   padding-bottom: 20px;
 }
 
+h3 {
+  text-align: center;
+  font-size: 1.6em;
+  margin: 20px 0;
+}
+
 footer {
   background-color: #ecddce;
   height: 100px;
@@ -57,6 +63,11 @@ a:hover {
   float: left;
   padding: 30px;
   text-align: center;
+}
+
+#avatar img {
+  margin: 10px 0;
+  width: 100px;
 }
 
 #quote {
