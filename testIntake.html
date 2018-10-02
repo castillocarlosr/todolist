@@ -29,23 +29,27 @@
     </header>
     <main>
       <div id="intakeModal" class="modal">
-
           <!-- Modal content -->
           <div class="modal-content">
               <span class="close">&times;</span>
+              <div>
+                  <p>Welcome to The List Keepr!</p>
+                  <p>In the "To Do Section" - keep track of all the things that need doing in your life</p>
+                  <p>In the "Daily Tasks Section" - keep track of things you want to do everyday to build better habbits.</p>
+                  <p>We've got some starter goals suggested for you based on your what goals are most important to you.</p>          
+              </div>
               <form id="intakeForm">
                   <fieldset>
-                      <label> Task Name:
-                          <input type="text" name="taskname">
+                      <label> Name:
+                          <input type="text" name="userName">
                       </label>
-                      <label>Difficulity
-                          <select name="difficulity">
-                              <option value="easy">easy</option>
-                              <option value="medium">medium</option>
-                              <option value="hard">hard</option>
+                      <label>What goal is most important to you?
+                          <select name="starterGoals">
+                              <option value="health">Improve My Health</option>
+                              <option value="balance">More Balance In My Life</option>
                           </select>
                       </label>
-                      <input id="dailyButton" type="submit" value="Submit">
+                      <input id="intakeButton" type="submit" value="Submit">
                   </fieldset>
               </form>
           </div>
@@ -64,7 +68,6 @@
         <script src="js/quote.js"></script>
         <script src="js/style.js"></script>
         <script src="js/avatar.js"></script>
-        <script src="js/fireworks.js"></script>
     </div>
 </body>
 </html>
