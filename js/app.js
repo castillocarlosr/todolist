@@ -17,6 +17,7 @@ function Task(taskName, taskDescript, taskType, dueDate, pointValue){
   this.taskType = taskType;
   this.dueDate = dueDate;
   this.value = pointValue;
+  this.completionState = 'open';
   Task.allTasks.push(this);
 }
 Task.allTasks = [];
@@ -91,7 +92,6 @@ function generateTasks(){
 generateTasks();
 
 function renderDaily(){
-  //dailyListHead.innerHTML = '';
   while(dailyListHead.childNodes.length > 1){
     dailyListHead.removeChild(dailyListHead.lastChild);
   }
@@ -111,7 +111,6 @@ function renderDaily(){
 renderDaily();
 
 function renderToDo(){
-  //todoListHead.innerHTML = '';
   while(todoListHead.childNodes.length > 1){
     todoListHead.removeChild(todoListHead.lastChild);
   }
