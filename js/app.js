@@ -1,7 +1,7 @@
 'use strict';
 
-//var addDailyButton = document.getElementById('dailyButton');
-//var addToDoButton = document.getElementById('todoButton');
+var addDaily = document.getElementById('dailyForm');
+var addToDo = document.getElementById('todoForm');
 var dailyListHead = document.getElementById('dailyLegend');
 var todoListHead = document.getElementById('todoLegend');
 
@@ -24,54 +24,54 @@ function buildTasks(){
   localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
 }
 
-// function addTask(taskName, taskDescript, taskType, dueDate, pointValue){
-//   //check for uniqueness for all tasks, regardless of type 
-//   let index = getTaskIndexByName(taskName);
-//   if( !( index || index === 0 ) ){
-//     new Task(taskName, taskDescript, taskType, dueDate, pointValue);
-//     localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
-//   }
-//   else{
-//     //How do we need to handle duplicate task names?
-//     console.log('Task name already in use, use something else');
+function addTask(taskName, taskDescript, taskType, dueDate, pointValue){
+  //check for uniqueness for all tasks, regardless of type
+  let index = getTaskIndexByName(taskName);
+  if( !( index || index === 0 ) ){
+    new Task(taskName, taskDescript, taskType, dueDate, pointValue);
+    localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
+  }
+  else{
+    //How do we need to handle duplicate task names?
+    console.log('Task name already in use, use something else');
 
-//   }
-// }
+  }
+}
 
-// function getTaskIndexByName(taskName){
-//   for(let i = 0; i < Task.allTasks.length; i++){
-//     if(Task.allTasks[i].name === taskName){
-//       return i;
-//     }
-//   }
-// }
+function getTaskIndexByName(taskName){
+  for(let i = 0; i < Task.allTasks.length; i++){
+    if(Task.allTasks[i].name === taskName){
+      return i;
+    }
+  }
+}
 
-// function updateTask(taskName, taskDescript, taskType, dueDate, pointValue){
-//   let index = getTaskIndexByName(taskName);
-//   if( index || index === 0 ){
-//     Task.allTasks[index].description = taskDescript;
-//     Task.allTasks[index].taskType = taskType;
-//     Task.allTasks[index].dueDate = dueDate;
-//     Task.allTasks[index].value = pointValue;
-//     localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
-//   }
-//   else{
-//     //How do we need to handle updating a non-existent task?
-//     console.log('Task does not exist; try adding a task with that name instead');
-//   }
-// }
+function updateTask(taskName, taskDescript, taskType, dueDate, pointValue){
+  let index = getTaskIndexByName(taskName);
+  if( index || index === 0 ){
+    Task.allTasks[index].description = taskDescript;
+    Task.allTasks[index].taskType = taskType;
+    Task.allTasks[index].dueDate = dueDate;
+    Task.allTasks[index].value = pointValue;
+    localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
+  }
+  else{
+    //How do we need to handle updating a non-existent task?
+    console.log('Task does not exist; try adding a task with that name instead');
+  }
+}
 
-// function removeTask(taskName){
-//   let index = getTaskIndexByName(taskName);
-//   if( index || index === 0 ){
-//     let removedTask = Task.allTasks.splice(index,1);
-//     console.log('removing ' + removedTask);
-//     localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
-//   }
-//   else{
-//     console.log('No task with that name exists.');
-//   }
-// }
+function removeTask(taskName){
+  let index = getTaskIndexByName(taskName);
+  if( index || index === 0 ){
+    let removedTask = Task.allTasks.splice(index,1);
+    console.log('removing ' + removedTask);
+    localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
+  }
+  else{
+    console.log('No task with that name exists.');
+  }
+}
 
 function generateTasks(){
   var myTasks = localStorage.getItem('tasks');
@@ -129,21 +129,24 @@ function addElement(tag,elementContent,parentElement){
 
 //need a handler to update daily task list
 
-//function updateDaily(){
-
-//};
+function updateDaily(event){
+  console.log('Before the preventDefault');
+  event.preventDefault();
+  console.log('updateDaily submitted');
+}
 
 // //  change the object to delete the list & add the new update list.
-// dailyButton.addEventLister('submit', updateDaily);
+addDaily.addEventListener('submit', updateDaily);
 
 
 
 
-// //need a handler to update non-daily To Do list
-// //  change the object to delete the list & add the new update list.
-// //function updateToDo(){
+//need a handler to update non-daily To Do list
+//  change the object to delete the list & add the new update list.
+function updateToDo(event){
+  console.log('Before the preventDefault');
+  event.preventDefault();
+  console.log('updateToDo submitted');
+}
 
-// //};
-
-// addToDoButton.addEventLister('submit', updateToDo);
-
+addToDo.addEventListener('submit', updateToDo);
