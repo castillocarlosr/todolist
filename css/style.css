@@ -204,3 +204,17 @@ input[type=checkbox]:checked {
   text-decoration: none;
   cursor: pointer;
 }
+
+.slide {
+  border: none; 
+  opacity: 0; 
+  position: absolute; 
+  top: 0; 
+  left: 0;
+  -webkit-transition: opacity 2s linear;
+  -moz-transition: opacity 2s linear;
+  -o-transition: opacity 2s linear;
+  transition: opacity 2s linear;
+}
+.showMe {opacity: 1;}
+
