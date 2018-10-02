@@ -26,9 +26,9 @@ Task.allTasks = [];
 
 
 function buildTasks(){
-  new Task('task 1', 'task 1 description - synch', 'daily', 'now', 1);
-  new Task('task 2', 'task 2 description - synch', 'daily', 'soon', 5);
-  new Task('task 3', 'task 3 description - asynch', 'toDo', 'later', 8);
+  // new Task('task 1', 'task 1 description - synch', 'daily', 'now', 1);
+  // new Task('task 2', 'task 2 description - synch', 'daily', 'soon', 5);
+  // new Task('task 3', 'task 3 description - asynch', 'toDo', 'later', 8);
   localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
 }
 
