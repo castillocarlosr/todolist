@@ -156,18 +156,10 @@ addToDo.addEventListener('submit', updateToDo);
 
 
 // function for adding fireworks then setting timer to remove
-//if points = 5, 10, 15, 20....false  else true
-// function myFunction(true) {
-//   setTimeout(function(){ alert("Hello"); }, 3000);
-// else{
-//   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
-// var sheetParent = sheetToBeRemoved.parentNode;
-// sheetParent.removeChild(sheetToBeRemoved);
-// }
-// }
-var levelPoint = 11;
 
-if (levelPoint<5 || levelPoint>5 || levelPoint>10) {
+var levelPoint = true;
+
+if (levelPoint) {
   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
   var sheetParent = sheetToBeRemoved.parentNode;
   sheetParent.removeChild(sheetToBeRemoved);
