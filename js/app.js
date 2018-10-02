@@ -10,7 +10,7 @@ var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
 var todoModal = document.getElementById('todoModal');
 var dailyFieldset = document.getElementById('dailyFeildset')
-var currentPoints = 10;
+var currentPoints = 0;
 
 
 //Need a task object; should use a constructor
