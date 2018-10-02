@@ -4,11 +4,16 @@
     <title>The List Keeper</title>
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/fireworks.css"/>
     <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
 </head>
 
 <body>
     <header>
+        <div id="fireworksOnOff" class="pyro">
+            <div class="before"></div>
+            <div class="after"></div>
+        </div>
         <div id="avatar">
             <h3>Class</h3>
             <a href ="character.html"><img src="img/farmer.png"/></a>
@@ -24,12 +29,12 @@
 
 <main>
     <div id="dailies" class="clear" class="goalsList">
-        <form>
+        <form class="add">
             <fieldset>
                 <legend id="dailyLegend"> Daily tasks </legend>
     
                 <label for="taskDaily">
-                    <input id="dailyButton" type="submit" value="Add Daily">
+                    <input id="addDaily" type="submit" value="Add Daily">
                 </label>
             </fieldset>
         </form>
@@ -52,7 +57,7 @@
                             <option value="hard">hard</option>
                         </select>
                     </label>
-                    <input type="submit" value="Submit">
+                    <input id="dailyButton" type="submit" value="Submit">
                 </fieldset>
             </form>
         </div>
@@ -62,12 +67,12 @@
     </div>
     <div id="todos" class="goalsList">
 
-        <form id="longTerm">
+        <form id="longTerm" class="add">
             <fieldset>
                 <legend id="todoLegend">To-Dos</legend>
     
                 <label for="taskLong">
-                    <input id="todoButton" type="submit" value="Add To Do">
+                    <input id="addTodo" type="submit" value="Add To Do">
                 </label>
             </fieldset>
         </form>
@@ -95,42 +100,13 @@
                                     <option value="hard">hard</option>
                                 </select>
                             </label>
-                            <input type="submit" value="Submit">
+                            <input id="todoButton" type="submit" value="Submit">
                         </fieldset>
                     </form>
                 </div>
         
     </div>
 
-    <div class="user-input">
-        <canvas id="myCanvas"></canvas>
-        <!-- <label for="fireWorkCount">Number of FireWorks</label> -->
-        <select name="fireWorkCount" id="fireWorkCount">
-            <option value="1" >1</option>
-            <option value="5" >5</option>
-            <option value="10" selected>10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="50">50</option>
-        </select>
-        <script src="fireworks.js"></script>
-    </div>
-
-    <div class="user-input">
-        <!-- <canvas id="myCanvas"></canvas> -->
-        <!-- <label for="fireWorkCount">Number of FireWorks</label> -->
-        <select name="fireWorkCount" id="fireWorkCount">
-            <option value="1" >1</option>
-            <option value="5" >5</option>
-            <option value="10" selected>10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="50">50</option>
-        </select>
-        <script src="fireworks.js"></script>
-    </div>
 </main>
 <div class="clear">
     <footer>  
