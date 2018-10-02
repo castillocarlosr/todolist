@@ -32,19 +32,19 @@ function buildTasks(){
   localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
 }
 
-function addTask(taskName, taskDescript, taskType, dueDate, pointValue){
-  //check for uniqueness for all tasks, regardless of type
-  let index = getTaskIndexByName(taskName);
-  if( !( index || index === 0 ) ){
-    new Task(taskName, taskDescript, taskType, dueDate, pointValue);
-    localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
-  }
-  else{
-    //How do we need to handle duplicate task names?
-    console.log('Task name already in use, use something else');
+// function addTask(taskName, taskDescript, taskType, dueDate, pointValue){
+//   //check for uniqueness for all tasks, regardless of type
+//   let index = getTaskIndexByName(taskName);
+//   if( !( index || index === 0 ) ){
+//     new Task(taskName, taskDescript, taskType, dueDate, pointValue);
+//     localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
+//   }
+//   else{
+//     //How do we need to handle duplicate task names?
+//     console.log('Task name already in use, use something else');
 
-  }
-}
+//   }
+// }
 
 function getTaskIndexByName(taskName){
   for(let i = 0; i < Task.allTasks.length; i++){
@@ -81,17 +81,17 @@ function removeTask(taskName){
   }
 }
 
-function generateTasks(){
-  var myTasks = localStorage.getItem('tasks');
-  if(!myTasks || myTasks.length === 0){
-    buildTasks();
-  }
-  else{
-    Task.allTasks = JSON.parse(myTasks);
-  }
-}
+// function generateTasks(){
+//   var myTasks = localStorage.getItem('tasks');
+//   if(!myTasks || myTasks.length === 0){
+//     buildTasks();
+//   }
+//   else{
+//     Task.allTasks = JSON.parse(myTasks);
+//   }
+// }
 
-generateTasks();
+// generateTasks();
 
 function renderDaily(){
   while(dailyListHead.childNodes.length > 1){
@@ -237,3 +237,44 @@ function checkboxHandler(event) {
     }
   }
 }
+
+
+function changePic(){
+  var timer = setInterval(nextImage, 2000);
+  var curImage = 0;
+  var numImages = 2;
+  
+  function nextImage() {
+      var pic;
+      // remove showMe class from current image
+      pic = document.getElementById("slideimg" + curImage);
+      removeClass(pic, "");
+  
+      // compute next image
+      curImage++;
+      // if (curImage > numImages - 1) {
+      //     curImage = 0;
+      // }
+  
+      // add showMe class to next image
+      
+      pic = document.getElementById("slideimg" + curImage);
+      addClass(pic, "showMe");
+  }
+  
+  function addClass(elem, name) {
+      var change = elem.className;
+      if (change) change += " ";  // if not blank, add a space separator
+      change += name;
+      elem.className = change;
+  }
+  
+  function removeClass(elem, name) {
+      var change = elem.className;
+      elem.className = change.replace(name, "").replace(/   /g, " ").replace(/^ | $/g, "");  // remove name and extra blanks
+  }
+  }
+  
+  changePic();
+  
+  
