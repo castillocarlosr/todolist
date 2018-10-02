@@ -7,7 +7,7 @@ body {
   background: transparent;
   overflow: hidden; }
 
-.pyro > .before, .pyro > .after {
+#fireworksOnOff > #before, #fireworksOnOff > #after {
   position: absolute;
   width: 5px;
   height: 5px;

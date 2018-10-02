@@ -1,5 +1,8 @@
 'use strict';
 
+//Removes the fireworks at start-up
+
+
 var addDaily = document.getElementById('dailyForm');
 var addToDo = document.getElementById('todoForm');
 var dailyListHead = document.getElementById('dailyLegend');
@@ -150,3 +153,24 @@ function updateToDo(event){
 }
 
 addToDo.addEventListener('submit', updateToDo);
+
+
+// function for adding fireworks then setting timer to remove
+//if points = 5, 10, 15, 20....false  else true
+// function myFunction(true) {
+//   setTimeout(function(){ alert("Hello"); }, 3000);
+// else{
+//   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
+// var sheetParent = sheetToBeRemoved.parentNode;
+// sheetParent.removeChild(sheetToBeRemoved);
+// }
+// }
+
+if (false) {
+  var sheetToBeRemoved = document.getElementById('fireworksOnOff');
+  var sheetParent = sheetToBeRemoved.parentNode;
+  sheetParent.removeChild(sheetToBeRemoved);
+}
+
+
+
