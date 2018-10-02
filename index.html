@@ -68,6 +68,30 @@
         </div>
   
     </div>
+    <!-- The Daily Detail Modal -->
+    <div id="dailyDetailModal" class="modal">
+
+        <!-- Detail Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="dailyDetails">
+                <fieldset>
+                    <label> Task Name:
+                        <input id = "dailyDetailTaskName" type="text" name="taskname" placeholder="task name">
+                    </label>
+                    <label>Difficulity
+                        <select id="dailyDetailTaskDifficulty" name="difficulity" selected="">
+                            <option value="easy">easy</option>
+                            <option value="medium">medium</option>
+                            <option value="hard">hard</option>
+                        </select>
+                    </label>
+                    <input id="dailyDetailsButton" type="submit" value="Submit Changes">
+                </fieldset>
+            </form>
+        </div>
+  
+    </div>
 
     </div>
     <div id="todos" class="goalsList">

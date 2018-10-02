@@ -34,7 +34,7 @@ var todoModal = document.getElementById('todoModal');
 var todoButton = document.getElementById('addTodo');
 
 // Get the <span> element that closes the modal
-var closeOne = document.getElementsByClassName('close')[1];
+var closeOne = document.getElementsByClassName('close')[2];
 
 // When the user clicks on the button, open the modal
 todoButton.onclick = function() {
@@ -51,5 +51,26 @@ closeOne.onclick = function() {
 window.onclick = function(event) {
   if (event.target === todoModal) {
     todoModal.style.display = 'none';
+  }
+};
+
+/////////to make the daily task detail form appear//////////////
+// Get the daily detail modal
+var dailyDetailModal = document.getElementById('dailyDetailModal');
+
+// Get the <span> element that closes the modal
+var closeDailyDetail = document.getElementsByClassName('close')[1];
+
+//event handler for when "Click Me" text area is clicked
+
+// When the user clicks on <span> (x), close the modal
+closeDailyDetail.onclick = function() {
+  dailyDetailModal.style.display = 'none';
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target === dailyDetailModal) {
+    dailyDetailModal.style.display = 'none';
   }
 };
