@@ -166,7 +166,7 @@ addToDo.addEventListener('submit', updateToDo);
 // }
 // }
 
-if (false) {
+if (true) {
   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
   var sheetParent = sheetToBeRemoved.parentNode;
   sheetParent.removeChild(sheetToBeRemoved);
