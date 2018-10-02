@@ -69,13 +69,13 @@ a:hover {
   width: 43%;
 }
 
-#dailies label {
+#dailies .add label {
   display: inline-block; 
   padding-top: 10px;
   width: 90%;
 }
 
-#dailies input {
+#dailies .add input {
   float:left;
   margin-right: 10px;
 }
@@ -90,12 +90,12 @@ a:hover {
   width: 43%;
 }
 
-#todos input {
+#todos .add input {
   float:left;
   margin-right: 10px;
 }
 
-#todos label {
+#todos .add label {
   display: inline-block; 
   padding-top: 10px;
 }
