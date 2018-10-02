@@ -74,3 +74,5 @@ window.onclick = function(event) {
     dailyDetailModal.style.display = 'none';
   }
 };
+
+
