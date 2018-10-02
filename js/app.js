@@ -9,7 +9,7 @@ var dailyListHead = document.getElementById('dailyLegend');
 var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
 var todoModal = document.getElementById('todoModal');
-var dailyFieldset = document.getElementById('dailyFeildset')
+var dailyFieldset = document.getElementById('dailyFeildset');
 var currentPoints = 0;
 
 
@@ -27,10 +27,10 @@ Task.allTasks = [];
 
 
 function buildTasks(){
-
-  new Task('task 1', 'task 1 description - synch', 'daily', 'now', 1);
-  new Task('task 2', 'task 2 description - synch', 'daily', 'soon', 3);
-  new Task('task 3', 'task 3 description - asynch', 'toDo', 'later', 5);
+  new Task('Drink water', '', 'daily', 'EoD', 1);
+  new Task('Take 6000 steps', '', 'daily', 'EoD', 3);
+  new Task('Get 8 hours of sleep', '', 'daily', 'EoD', 3);
+  new Task('Graduate CodeFellows 201','Present this final project in front of the class on Friday!','toDo','EoD Friday', 5);
   localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
 }
 
@@ -83,17 +83,17 @@ function removeTask(taskName){
   }
 }
 
-// function generateTasks(){
-//   var myTasks = localStorage.getItem('tasks');
-//   if(!myTasks || myTasks.length === 0){
-//     buildTasks();
-//   }
-//   else{
-//     Task.allTasks = JSON.parse(myTasks);
-//   }
-// }
+function generateTasks(){
+  var myTasks = localStorage.getItem('tasks');
+  if(!myTasks || myTasks.length === 0){
+    buildTasks();
+  }
+  else{
+    Task.allTasks = JSON.parse(myTasks);
+  }
+}
 
-// generateTasks();
+generateTasks();
 
 function renderDaily(){
   while(dailyListHead.childNodes.length > 1){
@@ -253,37 +253,37 @@ function changePic(){
 
   
   function nextImage() {
-      var pic;
-      // remove showMe class from current image
-      pic = document.getElementById("slideimg" + curImage);
-      removeClass(pic, "");
+    var pic;
+    // remove showMe class from current image
+    pic = document.getElementById("slideimg" + curImage);
+    removeClass(pic, "");
   
-      // compute next image
-      curImage++;
-      // if (curImage > numImages - 1) {
-      //     curImage = 0;
-      // }
+    // compute next image
+    curImage++;
+    // if (curImage > numImages - 1) {
+    //     curImage = 0;
+    // }
   
-      // add showMe class to next image
+    // add showMe class to next image
       
-      pic = document.getElementById("slideimg" + curImage);
-      addClass(pic, "showMe");
-      pic2 = document.getElementById("slideimg0");
-      removeClass(pic2, "showMe");
+    pic = document.getElementById("slideimg" + curImage);
+    addClass(pic, "showMe");
+    pic2 = document.getElementById("slideimg0");
+    removeClass(pic2, "showMe");
   }
   
   function addClass(elem, name) {
-      var change = elem.className;
-      if (change) change += " ";  // if not blank, add a space separator
-      change += name;
-      elem.className = change;
+    var change = elem.className;
+    if (change) change += " ";  // if not blank, add a space separator
+    change += name;
+    elem.className = change;
   }
   
   function removeClass(elem, name) {
-      var change = elem.className;
-      elem.className = change.replace(name, "").replace(/   /g, " ").replace(/^ | $/g, "");  // remove name and extra blanks
+    var change = elem.className;
+    elem.className = change.replace(name, "").replace(/   /g, " ").replace(/^ | $/g, "");  // remove name and extra blanks
   }
-  }
+}
   
 
 function run(){
