@@ -35,6 +35,7 @@ legend {
   font-family: 'Nothing You Could Do', cursive;
   font-weight: bold;
   padding-bottom: 20px;
+  width: 100%;
 }
 
 h3 {
@@ -69,7 +70,7 @@ a:hover {
   text-align: center;
 }
 
-input[type=checkbox]:checked {
+input[type=checkbox]:checked + span{
   text-decoration: line-through;
 }
 
@@ -204,3 +205,17 @@ input[type=checkbox]:checked {
   text-decoration: none;
   cursor: pointer;
 }
+
+.slide {
+  border: none; 
+  opacity: 0; 
+  position: absolute; 
+  top: 0; 
+  left: 0;
+  -webkit-transition: opacity 2s linear;
+  -moz-transition: opacity 2s linear;
+  -o-transition: opacity 2s linear;
+  transition: opacity 2s linear;
+}
+.showMe {opacity: 1;}
+

@@ -9,6 +9,7 @@ var dailyListHead = document.getElementById('dailyLegend');
 var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
 var todoModal = document.getElementById('todoModal');
+var dailyFieldset = document.getElementById('dailyFeildset')
 var currentPoints = 0;
 
 
@@ -26,6 +27,7 @@ Task.allTasks = [];
 
 
 function buildTasks(){
+
   new Task('task 1', 'task 1 description - synch', 'daily', 'now', 1);
   new Task('task 2', 'task 2 description - synch', 'daily', 'soon', 3);
   new Task('task 3', 'task 3 description - asynch', 'toDo', 'later', 5);
@@ -81,17 +83,17 @@ function removeTask(taskName){
   }
 }
 
-function generateTasks(){
-  var myTasks = localStorage.getItem('tasks');
-  if(!myTasks || myTasks.length === 0){
-    buildTasks();
-  }
-  else{
-    Task.allTasks = JSON.parse(myTasks);
-  }
-}
+// function generateTasks(){
+//   var myTasks = localStorage.getItem('tasks');
+//   if(!myTasks || myTasks.length === 0){
+//     buildTasks();
+//   }
+//   else{
+//     Task.allTasks = JSON.parse(myTasks);
+//   }
+// }
 
-generateTasks();
+// generateTasks();
 
 function renderDaily(){
   while(dailyListHead.childNodes.length > 1){
@@ -100,8 +102,10 @@ function renderDaily(){
   let fieldsetElement = addElement('fieldset','',dailyListHead);
   for(let i = 0; i < Task.allTasks.length; i++){
     if(Task.allTasks[i].taskType === 'daily'){
-      let labelElement = addElement('label', Task.allTasks[i].name, fieldsetElement);
-      let inputElement = addElement('input','',labelElement);
+      let labelElement = addElement('label', '' , fieldsetElement);
+      let inputElement = addElement('input', '' ,labelElement);
+      addElement('span', Task.allTasks[i].name, labelElement);
+      
       inputElement.setAttribute('type', 'checkbox');
       inputElement.setAttribute('value', Task.allTasks[i].name);
       inputElement.addEventListener('click', checkboxHandler);
@@ -223,8 +227,7 @@ addToDo.addEventListener('submit', updateToDo);
 
 //event handler when a checkbox is clicked
 
-function checkboxHandler(event) {
-  event.preventDefault();
+function checkboxHandler() {
 
   for (var i=0; i<Task.allTasks.length; i++){
     if (this.value === Task.allTasks[i].name){
@@ -238,3 +241,41 @@ function checkboxHandler(event) {
   }
 }
 
+// function changePic(){
+//   var timer = setInterval(nextImage, 2000);
+//   var curImage = 0;
+//   var numImages = 2;
+  
+//   function nextImage() {
+//       var pic;
+//       // remove showMe class from current image
+//       pic = document.getElementById("slideimg" + curImage);
+//       removeClass(pic, "");
+  
+//       // compute next image
+//       curImage++;
+//       // if (curImage > numImages - 1) {
+//       //     curImage = 0;
+//       // }
+  
+//       // add showMe class to next image
+      
+//       pic = document.getElementById("slideimg" + curImage);
+//       addClass(pic, "showMe");
+//   }
+  
+//   function addClass(elem, name) {
+//       var change = elem.className;
+//       if (change) change += " ";  // if not blank, add a space separator
+//       change += name;
+//       elem.className = change;
+//   }
+  
+//   function removeClass(elem, name) {
+//       var change = elem.className;
+//       elem.className = change.replace(name, "").replace(/   /g, " ").replace(/^ | $/g, "");  // remove name and extra blanks
+//   }
+//   }
+  
+//   changePic();
+  
