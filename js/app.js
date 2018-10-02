@@ -27,8 +27,8 @@ Task.allTasks = [];
 
 function buildTasks(){
   new Task('task 1', 'task 1 description - synch', 'daily', 'now', 1);
-  new Task('task 2', 'task 2 description - synch', 'daily', 'soon', 5);
-  new Task('task 3', 'task 3 description - asynch', 'toDo', 'later', 8);
+  new Task('task 2', 'task 2 description - synch', 'daily', 'soon', 3);
+  new Task('task 3', 'task 3 description - asynch', 'toDo', 'later', 5);
   localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
 }
 
@@ -211,13 +211,13 @@ addToDo.addEventListener('submit', updateToDo);
 // sheetParent.removeChild(sheetToBeRemoved);
 // }
 // }
-var levelPoint = 11;
+// var levelPoint = 11;
 
-if (levelPoint<5 || levelPoint>5 || levelPoint>10) {
-  var sheetToBeRemoved = document.getElementById('fireworksOnOff');
-  var sheetParent = sheetToBeRemoved.parentNode;
-  sheetParent.removeChild(sheetToBeRemoved);
-}
+// if (levelPoint<5 || levelPoint>5 || levelPoint>10) {
+//   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
+//   var sheetParent = sheetToBeRemoved.parentNode;
+//   sheetParent.removeChild(sheetToBeRemoved);
+// }
 
 
 
@@ -237,3 +237,4 @@ function checkboxHandler(event) {
     }
   }
 }
+
