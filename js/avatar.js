@@ -19,7 +19,9 @@
 // append current point total to below avatar
 var currentPoints = 0;
 var getAvatar = document.getElementById('avatar');
-addElement('p', currentPoints.toString(), getAvatar);
+var addedElement = addElement('p', currentPoints.toString(), getAvatar);
+addedElement.setAttribute('id', 'displayedPoints');
+
 
 // prepend current point total above avatar
 var avatarClass = 'Peasant';
@@ -30,6 +32,7 @@ getAvatar = document.getElementById('avatar');
 //getAvatar.prependChild(classNameElement);
 
 //parentNode.insertBefore(newNode, referenceNode);
-getAvatar.insertBefore(classNameElement, getAvatar.firstChild);
+addedElement = getAvatar.insertBefore(classNameElement, getAvatar.firstChild);
+addedElement.setAttribute('id', 'currentClass');
 
 
