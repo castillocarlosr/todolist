@@ -26,7 +26,8 @@ function isNotFive() {
     return(true);
   }
 }
-if (isNotFive()) {
+// if (isNotFive())
+if (true){
   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
   var sheetParent = sheetToBeRemoved.parentNode;
   sheetParent.removeChild(sheetToBeRemoved);
