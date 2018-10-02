@@ -225,7 +225,15 @@ if (levelPoint<5 || levelPoint>5 || levelPoint>10) {
 
 function checkboxHandler(event) {
   event.preventDefault();
-  this.completionState = 'complete';
-  currentPoints = this.value + currentPoints;
-  console.log(currentPoints);
+
+  for (var i=0; i<Task.allTasks.length; i++){
+    if (this.value === Task.allTasks[i].name){
+      Task.allTasks[i].completionState = 'complete';
+      currentPoints = Task.allTasks[i].value + currentPoints;
+      
+      var changePoints = document.getElementById('displayedPoints');
+      changePoints.innerHTML = currentPoints.toString();
+      break;
+    }
+  }
 }
