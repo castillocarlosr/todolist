@@ -9,6 +9,8 @@ var dailyListHead = document.getElementById('dailyLegend');
 var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
 var todoModal = document.getElementById('todoModal');
+var currentPoints = 0;
+
 
 //Need a task object; should use a constructor
 function Task(taskName, taskDescript, taskType, dueDate, pointValue){
@@ -102,6 +104,7 @@ function renderDaily(){
       let inputElement = addElement('input','',labelElement);
       inputElement.setAttribute('type', 'checkbox');
       inputElement.setAttribute('value', Task.allTasks[i].name);
+      inputElement.addEventListener('click', checkboxHandler);
     }
     else{
       console.log('Not a daily task - type is: ' + Task.allTasks[i].taskType);
@@ -159,6 +162,8 @@ function updateDaily(event){
   }
   addTask(newDailyTaskName,'','daily','end of day today', taskPoints);
   dailyModal.style.display = 'none';
+
+
   renderDaily();
 }
 
@@ -215,3 +220,12 @@ if (levelPoint<5 || levelPoint>5 || levelPoint>10) {
 }
 
 
+
+//event handler when a checkbox is clicked
+
+function checkboxHandler(event) {
+  event.preventDefault();
+  this.completionState = 'complete';
+  currentPoints = this.value + currentPoints;
+  console.log(currentPoints);
+}
