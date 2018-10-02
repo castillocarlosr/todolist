@@ -123,10 +123,13 @@ function renderToDo(){
   let fieldsetElement = addElement('fieldset','',todoListHead);
   for(let i = 0; i < Task.allTasks.length; i++){
     if(Task.allTasks[i].taskType === 'toDo'){
-      let labelElement = addElement('label', Task.allTasks[i].name, fieldsetElement);
+      let labelElement = addElement('label', '' , fieldsetElement);
       let inputElement = addElement('input', '', labelElement);
+      addElement('span', Task.allTasks[i].name, labelElement);
       inputElement.setAttribute('type', 'checkbox');
       inputElement.setAttribute('value', Task.allTasks[i].name);
+
+      inputElement.addEventListener('click', checkboxHandler);
     }
     else{
       console.log('Not a toDo task - type is: ' + Task.allTasks[i].taskType);
