@@ -7,6 +7,8 @@ var addDaily = document.getElementById('dailyForm');
 var addToDo = document.getElementById('todoForm');
 var dailyListHead = document.getElementById('dailyLegend');
 var todoListHead = document.getElementById('todoLegend');
+var dailyModal = document.getElementById('dailyModal');
+var todoModal = document.getElementById('todoModal');
 
 //Need a task object; should use a constructor
 function Task(taskName, taskDescript, taskType, dueDate, pointValue){
@@ -15,6 +17,7 @@ function Task(taskName, taskDescript, taskType, dueDate, pointValue){
   this.taskType = taskType;
   this.dueDate = dueDate;
   this.value = pointValue;
+  this.completionState = 'open';
   Task.allTasks.push(this);
 }
 Task.allTasks = [];
@@ -89,6 +92,9 @@ function generateTasks(){
 generateTasks();
 
 function renderDaily(){
+  while(dailyListHead.childNodes.length > 1){
+    dailyListHead.removeChild(dailyListHead.lastChild);
+  }
   let fieldsetElement = addElement('fieldset','',dailyListHead);
   for(let i = 0; i < Task.allTasks.length; i++){
     if(Task.allTasks[i].taskType === 'daily'){
@@ -105,6 +111,9 @@ function renderDaily(){
 renderDaily();
 
 function renderToDo(){
+  while(todoListHead.childNodes.length > 1){
+    todoListHead.removeChild(todoListHead.lastChild);
+  }
   let fieldsetElement = addElement('fieldset','',todoListHead);
   for(let i = 0; i < Task.allTasks.length; i++){
     if(Task.allTasks[i].taskType === 'toDo'){
@@ -133,9 +142,24 @@ function addElement(tag,elementContent,parentElement){
 //need a handler to update daily task list
 
 function updateDaily(event){
-  console.log('Before the preventDefault');
   event.preventDefault();
-  console.log('updateDaily submitted');
+  let newDailyTaskName = event.target.taskname.value;
+  let taskDiff = event.target.difficulity.value;
+  let taskPoints = 0;
+  switch(taskDiff){
+  case 'easy':
+    taskPoints = 1;
+    break;
+  case 'medium':
+    taskPoints = 3;
+    break;
+  case 'hard':
+    taskPoints = 5;
+    break;
+  }
+  addTask(newDailyTaskName,'','daily','end of day today', taskPoints);
+  dailyModal.style.display = 'none';
+  renderDaily();
 }
 
 // //  change the object to delete the list & add the new update list.
@@ -147,9 +171,26 @@ addDaily.addEventListener('submit', updateDaily);
 //need a handler to update non-daily To Do list
 //  change the object to delete the list & add the new update list.
 function updateToDo(event){
-  console.log('Before the preventDefault');
   event.preventDefault();
-  console.log('updateToDo submitted');
+  let newTodoTaskName = event.target.taskname.value;
+  let newTodoTaskDesc = event.target.taskdescription.value;
+  let taskDiff = event.target.difficulity.value;
+  let taskDueDate = event.target.dueDate.value;
+  let taskPoints = 0;
+  switch(taskDiff){
+  case 'easy':
+    taskPoints = 1;
+    break;
+  case 'medium':
+    taskPoints = 3;
+    break;
+  case 'hard':
+    taskPoints = 5;
+    break;
+  }
+  addTask(newTodoTaskName,newTodoTaskDesc,'toDo', taskDueDate, taskPoints);
+  todoModal.style.display = 'none';
+  renderToDo();
 }
 
 addToDo.addEventListener('submit', updateToDo);
