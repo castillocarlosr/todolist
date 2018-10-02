@@ -16,6 +16,15 @@ header {
   color: gray;
 }
 
+header nav {
+  float: right;
+}
+
+header nav li {
+  padding: 20px;
+}
+
+
 main {
   background-color: #b4b28c;
   min-height: 600px;
