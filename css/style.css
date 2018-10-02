@@ -159,12 +159,20 @@ input[type=checkbox]:checked + span{
   padding-left: 20px;
 }
 
+#intakeModal {
+  width: 90%;
+}
+
+#intakeModal p {
+  padding: 20px;
+}
+
 .clear {
   clear:both;
 }
 
 .modal {
-  display: none;
+  /* display: none; */
   position: fixed; 
   z-index: 1;
   left: 0;
