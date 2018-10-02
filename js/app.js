@@ -9,6 +9,7 @@ var dailyListHead = document.getElementById('dailyLegend');
 var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
 var todoModal = document.getElementById('todoModal');
+var dailyFieldset = document.getElementById('dailyFeildset')
 var currentPoints = 0;
 
 
@@ -225,8 +226,7 @@ if (levelPoint<5 || levelPoint>5 || levelPoint>10) {
 
 //event handler when a checkbox is clicked
 
-function checkboxHandler(event) {
-  event.preventDefault();
+function checkboxHandler() {
 
   for (var i=0; i<Task.allTasks.length; i++){
     if (this.value === Task.allTasks[i].name){
