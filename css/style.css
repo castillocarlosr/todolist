@@ -69,7 +69,7 @@ a:hover {
   text-align: center;
 }
 
-input[type=checkbox]:checked {
+input[type=checkbox]:checked label{
   text-decoration: line-through;
 }
 
