@@ -10,7 +10,7 @@ var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
 var todoModal = document.getElementById('todoModal');
 var dailyFieldset = document.getElementById('dailyFeildset')
-var currentPoints = 0;
+var currentPoints = 10;
 
 
 //Need a task object; should use a constructor
@@ -27,9 +27,10 @@ Task.allTasks = [];
 
 
 function buildTasks(){
-  // new Task('task 1', 'task 1 description - synch', 'daily', 'now', 1);
-  // new Task('task 2', 'task 2 description - synch', 'daily', 'soon', 5);
-  // new Task('task 3', 'task 3 description - asynch', 'toDo', 'later', 8);
+
+  new Task('task 1', 'task 1 description - synch', 'daily', 'now', 1);
+  new Task('task 2', 'task 2 description - synch', 'daily', 'soon', 3);
+  new Task('task 3', 'task 3 description - asynch', 'toDo', 'later', 5);
   localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
 }
 
@@ -217,13 +218,13 @@ addToDo.addEventListener('submit', updateToDo);
 // sheetParent.removeChild(sheetToBeRemoved);
 // }
 // }
-var levelPoint = 11;
+// var levelPoint = 11;
 
-if (levelPoint<5 || levelPoint>5 || levelPoint>10) {
-  var sheetToBeRemoved = document.getElementById('fireworksOnOff');
-  var sheetParent = sheetToBeRemoved.parentNode;
-  sheetParent.removeChild(sheetToBeRemoved);
-}
+// if (levelPoint<5 || levelPoint>5 || levelPoint>10) {
+//   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
+//   var sheetParent = sheetToBeRemoved.parentNode;
+//   sheetParent.removeChild(sheetToBeRemoved);
+// }
 
 
 
@@ -244,42 +245,54 @@ function checkboxHandler() {
 }
 
 
-// function changePic(){
-//   var timer = setInterval(nextImage, 2000);
-//   var curImage = 0;
-//   var numImages = 2;
+
+function changePic(){
+  var timer = setInterval(nextImage, 2000);
+  var curImage = 0;
+  var numImages = 2;
+
   
-//   function nextImage() {
-//       var pic;
-//       // remove showMe class from current image
-//       pic = document.getElementById("slideimg" + curImage);
-//       removeClass(pic, "");
+  function nextImage() {
+      var pic;
+      // remove showMe class from current image
+      pic = document.getElementById("slideimg" + curImage);
+      removeClass(pic, "");
   
-//       // compute next image
-//       curImage++;
-//       // if (curImage > numImages - 1) {
-//       //     curImage = 0;
-//       // }
+      // compute next image
+      curImage++;
+      // if (curImage > numImages - 1) {
+      //     curImage = 0;
+      // }
   
-//       // add showMe class to next image
+      // add showMe class to next image
       
-//       pic = document.getElementById("slideimg" + curImage);
-//       addClass(pic, "showMe");
-//   }
+      pic = document.getElementById("slideimg" + curImage);
+      addClass(pic, "showMe");
+      pic2 = document.getElementById("slideimg0");
+      removeClass(pic2, "showMe");
+  }
   
-//   function addClass(elem, name) {
-//       var change = elem.className;
-//       if (change) change += " ";  // if not blank, add a space separator
-//       change += name;
-//       elem.className = change;
-//   }
+  function addClass(elem, name) {
+      var change = elem.className;
+      if (change) change += " ";  // if not blank, add a space separator
+      change += name;
+      elem.className = change;
+  }
   
-//   function removeClass(elem, name) {
-//       var change = elem.className;
-//       elem.className = change.replace(name, "").replace(/   /g, " ").replace(/^ | $/g, "");  // remove name and extra blanks
-//   }
-//   }
+  function removeClass(elem, name) {
+      var change = elem.className;
+      elem.className = change.replace(name, "").replace(/   /g, " ").replace(/^ | $/g, "");  // remove name and extra blanks
+  }
+  }
   
-//   changePic();
+
+function run(){
+  if(currentPoints === 10){
+    changePic();
+  }
+  else{
+
+  }
+}  
   
-  
+run();
