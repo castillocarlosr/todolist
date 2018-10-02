@@ -91,7 +91,10 @@ function generateTasks(){
 generateTasks();
 
 function renderDaily(){
-  dailyListHead.innerHTML = '';
+  //dailyListHead.innerHTML = '';
+  while(dailyListHead.childNodes.length > 1){
+    dailyListHead.removeChild(dailyListHead.lastChild);
+  }
   let fieldsetElement = addElement('fieldset','',dailyListHead);
   for(let i = 0; i < Task.allTasks.length; i++){
     if(Task.allTasks[i].taskType === 'daily'){
@@ -108,7 +111,10 @@ function renderDaily(){
 renderDaily();
 
 function renderToDo(){
-  todoListHead.innerHTML = '';
+  //todoListHead.innerHTML = '';
+  while(todoListHead.childNodes.length > 1){
+    todoListHead.removeChild(todoListHead.lastChild);
+  }
   let fieldsetElement = addElement('fieldset','',todoListHead);
   for(let i = 0; i < Task.allTasks.length; i++){
     if(Task.allTasks[i].taskType === 'toDo'){
