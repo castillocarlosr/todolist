@@ -55,6 +55,7 @@ function saveCurrentPoints(){
     currentPoints = 0;
   }
   localStorage.setItem('points', JSON.stringify(currentPoints));
+  userCurrentClass();
 }
 function addTask(taskName, taskDescript, taskType, dueDate, pointValue) {
   //check for uniqueness for all tasks, regardless of type
