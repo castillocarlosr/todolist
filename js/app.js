@@ -7,7 +7,7 @@ var lastLookedAtName = '';
 var addDaily = document.getElementById('dailyForm');
 var addToDo = document.getElementById('todoForm');
 var updateDailyObjectForm = document.getElementById('dailyDetails');
-var updateTodoObjectForm = document.getElementById('todoForm');
+var updateTodoObjectForm = document.getElementById('todoDetails');
 var dailyListHead = document.getElementById('dailyLegend');
 var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
@@ -308,9 +308,7 @@ function dailyDetailHandler(event) {
       targetedTask = Task.allTasks[i];
     }
   }
-  console.log(event.target.previousSibling.value + ' was pressed.');
   let dailyTaskName = document.getElementById('dailyDetailTaskName');
-  // dailyTaskName.setAttribute('value', targetedTask.name);
   dailyTaskName.setAttribute('value', targetedTask.name);
   dailyDetailModal.style.display = 'block';
   let dailyTaskDifficulty = document.getElementById('dailyDetailTaskDifficulty');
@@ -345,7 +343,6 @@ function todoDetailHandler(event) {
       targetedTask = Task.allTasks[i];
     }
   }
-  console.log(event.target.previousSibling.value + ' was pressed.');
   let todoTaskName = document.getElementById('todoDetailTaskName');
   todoTaskName.setAttribute('value', targetedTask.name);
   todoDetailModal.style.display = 'block';
@@ -370,7 +367,6 @@ function todoDetailHandler(event) {
 }
 
 function updateCurrentTask() {
-  console.log("in updateCurrentTask");
   event.preventDefault();
   let newDailyTaskName = event.target.taskname.value;
   let taskDiff = event.target.difficulity.value;
@@ -392,7 +388,6 @@ function updateCurrentTask() {
 }
 
 function updateToDoTask() {
-  console.log('before the preventDefault');
   event.preventDefault();
   let newDailyTaskName = event.target.taskname.value;
   let taskDiff = event.target.difficulity.value;
