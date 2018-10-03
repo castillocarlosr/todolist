@@ -9,7 +9,6 @@ this.filename = filename;
 this.filepath = filepath;
 Character.allCharacter.push(this);
 }
-
 new Character('sick-girl', 'img/sick-girl.png');
 new Character('farmer', 'img/farmer.png');
 new Character('masterfarmer', 'img/masterfarmer.png');
@@ -29,10 +28,10 @@ function addImage(){
     if(currentPoints > level[i]){
         i++
     }
-    picture1.alt = Character.allCharacter[i].filename;
-    picture1.src = Character.allCharacter[i].filepath;
-    picture2.alt = Character.allCharacter[i+1].filename;
-    picture2.src = Character.allCharacter[i+1].filepath;
+    picture1.alt = Character.allCharacter[i-1].filename;
+    picture1.src = Character.allCharacter[i-1].filepath;
+    picture2.alt = Character.allCharacter[i].filename;
+    picture2.src = Character.allCharacter[i].filepath;
     
     
 }
