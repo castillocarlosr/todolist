@@ -2,7 +2,7 @@
 
 var userName = localStorage.getItem('name');
 var avatarClass = 'Peasant';
-//var fireworkClass = 'fireworksOnOff';
+// var fireworkClass = 'fireworksOnOff';
 var currentPoints = 0;
 
 var getAvatar = document.getElementById('avatar');
@@ -29,7 +29,7 @@ addedElement.setAttribute('id', 'currentClass');
 //     return(true);
 //   }
 // }
-// // if (isNotFive())
+// if (isNotFive())
 // if (5){
 //   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
 //   var sheetParent = sheetToBeRemoved.parentNode;
