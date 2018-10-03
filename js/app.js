@@ -36,6 +36,23 @@ function buildTasks() {
   localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
 }
 
+function loadCurrentPoints(){
+  let tempPoints = localStorage.getItem('points');
+  if(tempPoints){
+    currentPoints = parseInt(JSON.parse(tempPoints));
+  }
+  else{
+    currentPoints = 0;
+  }
+}
+loadCurrentPoints();
+
+function saveCurrentPoints(){
+  if(!currentPoints){
+    currentPoints = 0;
+  }
+  localStorage.setItem('points', JSON.stringify(currentPoints));
+}
 function addTask(taskName, taskDescript, taskType, dueDate, pointValue) {
   //check for uniqueness for all tasks, regardless of type
   let index = getTaskIndexByName(taskName);
@@ -252,13 +269,17 @@ function checkboxHandler() {
       var changePoints = document.getElementById('displayedPoints');
       if (Task.allTasks[i].completionState === 'open') {
         Task.allTasks[i].completionState = 'complete';
+        loadCurrentPoints();
         currentPoints += Task.allTasks[i].value;
+        saveCurrentPoints();
         changePoints.innerHTML = currentPoints.toString() + ' points';
         localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
       }
       else {
         Task.allTasks[i].completionState = 'open';
+        loadCurrentPoints();
         currentPoints -= Task.allTasks[i].value;
+        saveCurrentPoints();
         changePoints.innerHTML = currentPoints.toString() + ' points';
         localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
       }

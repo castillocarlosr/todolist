@@ -4,6 +4,7 @@ var userName = localStorage.getItem('name');
 var avatarClass = 'Peasant';
 // var fireworkClass = 'fireworksOnOff';
 var currentPoints = 0;
+loadCurrentPoints();
 
 var getAvatar = document.getElementById('avatar');
 var addedElement = addElement('p', currentPoints.toString(), getAvatar);
