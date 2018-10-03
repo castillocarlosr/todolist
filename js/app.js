@@ -61,15 +61,16 @@ function saveCurrentPoints(){
 function addTask(taskName, taskDescript, taskType, dueDate, pointValue) {
   //check for uniqueness for all tasks, regardless of type
   let index = getTaskIndexByName(taskName);
-  if (!(index || index === 0)) {
+  let bIndexCollision = !(index || index === 0);
+  if (bIndexCollision) {
     new Task(taskName, taskDescript, taskType, dueDate, pointValue);
     localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
   }
   else {
     //How do we need to handle duplicate task names?
     console.log('Task name already in use, use something else');
-
   }
+  return bIndexCollision;
 }
 
 function getTaskIndexByName(taskName) {
@@ -83,7 +84,8 @@ function getTaskIndexByName(taskName) {
 function updateTask(taskName, taskDescript, taskType, dueDate, pointValue, newName) {
   let index = getTaskIndexByName(taskName);
   console.log('attempting to update index ' + index);
-  if (index || index === 0) {
+  let bUpdatedTask = (index || index === 0);
+  if (bUpdatedTask) {
     if (newName) {
       Task.allTasks[index].name = newName;
     }
@@ -97,11 +99,13 @@ function updateTask(taskName, taskDescript, taskType, dueDate, pointValue, newNa
     //How do we need to handle updating a non-existent task?
     console.log('Task does not exist; try adding a task with that name instead');
   }
+  return bUpdatedTask;
 }
 
 function removeTask(taskName) {
   let index = getTaskIndexByName(taskName);
-  if (index || index === 0) {
+  let bUpdatedTask = (index || index === 0);
+  if (bUpdatedTask) {
     let removedTask = Task.allTasks.splice(index, 1);
     console.log('removing ' + removedTask);
     localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
@@ -109,6 +113,7 @@ function removeTask(taskName) {
   else {
     console.log('No task with that name exists.');
   }
+  return bUpdatedTask;
 }
 
 function generateTasks() {
@@ -206,11 +211,14 @@ function updateDaily(event) {
     taskPoints = 5;
     break;
   }
-  addTask(newDailyTaskName, '', 'daily', 'end of day today', taskPoints);
-  dailyModal.style.display = 'none';
-
-
-  renderDaily();
+  let bTaskAdded = addTask(newDailyTaskName, '', 'daily', 'end of day today', taskPoints);
+  if(bTaskAdded){
+    dailyModal.style.display = 'none';
+    renderDaily();
+  }
+  else{
+    //TODO: make some warning that a task with that name exists
+  }
 }
 
 // //  change the object to delete the list & add the new update list.
@@ -239,9 +247,14 @@ function updateToDo(event) {
     taskPoints = 5;
     break;
   }
-  addTask(newTodoTaskName, newTodoTaskDesc, 'toDo', taskDueDate, taskPoints);
-  todoModal.style.display = 'none';
-  renderToDo();
+  let bTaskAdded = addTask(newTodoTaskName, newTodoTaskDesc, 'toDo', taskDueDate, taskPoints);
+  if(bTaskAdded){
+    todoModal.style.display = 'none';
+    renderToDo();
+  }
+  else{
+    //TODO: make some warning that a task with that name exists
+  }
 }
 
 addToDo.addEventListener('submit', updateToDo);
@@ -384,9 +397,14 @@ function updateCurrentTask() {
     taskPoints = 5;
     break;
   }
-  updateTask(lastLookedAtName, '', 'daily', 'end of day today', taskPoints, newDailyTaskName);
-  dailyDetailModal.style.display = 'none';
-  renderDaily();
+  let bTaskUpdated = updateTask(lastLookedAtName, '', 'daily', 'end of day today', taskPoints, newDailyTaskName);
+  if(bTaskUpdated){
+    dailyDetailModal.style.display = 'none';
+    renderDaily();
+  }
+  else{
+    //TODO: write behavior for trying to update a non-existent task 
+  }
 }
 
 function updateToDoTask() {
@@ -407,23 +425,38 @@ function updateToDoTask() {
   }
   let taskDesc = event.target.taskdescription.value;
   let taskDue = event.target.dueDate.value;
-  updateTask(lastLookedAtName, taskDesc, 'toDo', taskDue, taskPoints, newDailyTaskName);
-  todoDetailModal.style.display = 'none';
-  renderToDo();
+  let bTaskUpdated = updateTask(lastLookedAtName, taskDesc, 'toDo', taskDue, taskPoints, newDailyTaskName);
+  if(bTaskUpdated){
+    todoDetailModal.style.display = 'none';
+    renderToDo();
+  }
+  else{
+    //TODO: write behavior for trying to update a non-existent task
+  }
 }
 
 function deleteCurrentTask() {
   event.preventDefault();
-  removeTask(lastLookedAtName);
-  dailyDetailModal.style.display = 'none';
-  renderDaily();
+  let bTaskRemoved = removeTask(lastLookedAtName);
+  if(bTaskRemoved){
+    dailyDetailModal.style.display = 'none';
+    renderDaily();
+  }
+  else{
+    //TODO: write behavior for a failed deletion
+  }
 }
 
 function deleteToDoTask() {
   event.preventDefault();
-  removeTask(lastLookedAtName);
-  todoDetailModal.style.display = 'none';
-  renderToDo();
+  let bTaskRemoved = removeTask(lastLookedAtName);
+  if(bTaskRemoved){
+    todoDetailModal.style.display = 'none';
+    renderToDo();
+  }
+  else{
+    //TODO: write behavior for a failed deletion
+  }
 }
 
 updateDailyObjectForm.addEventListener('submit', updateCurrentTask);
