@@ -161,6 +161,7 @@ input[type=checkbox]:checked + span{
 
 #intakeModal {
   width: 90%;
+  display: block;
 }
 
 #intakeModal p {
