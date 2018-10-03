@@ -66,19 +66,19 @@ function characterAvatar() {
     } else if (currentPoints < 20) {
       generateImage('img/farmer.png');
     } else if (currentPoints < 50) {
-      avatarClass = 'Master Farmer';
+      generateImage('img/masterfarmer.png');
     } else if (currentPoints < 100) {
-      avatarClass = 'Craftsperson';
+      generateImage('img/artist.png');
     } else if (currentPoints < 200) {
-      avatarClass = 'Artisan';
+      generateImage('img/leader.png');
     } else if (currentPoints < 400) {
-      avatarClass = 'Lord';
+      generateImage('img/lord.png');
     } else if (currentPoints < 1000) {
-      avatarClass = 'Mage';
+      generateImage('img/magician.png');
     } else if (currentPoints < 2500) {
-      avatarClass = 'Royalty';
+      generateImage('img/queen.png');
     } else {
-      avatarClass = 'God';
+      generateImage('img/zues.png');
     }
   }
 }
