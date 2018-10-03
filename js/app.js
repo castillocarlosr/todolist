@@ -56,9 +56,13 @@ function getTaskIndexByName(taskName){
   }
 }
 
-function updateTask(taskName, taskDescript, taskType, dueDate, pointValue){
+function updateTask(taskName, taskDescript, taskType, dueDate, pointValue, newName){
   let index = getTaskIndexByName(taskName);
+  console.log('attempting to update index ' + index);
   if( index || index === 0 ){
+    if(newName){
+      Task.allTasks[index].name = newName;
+    }
     Task.allTasks[index].description = taskDescript;
     Task.allTasks[index].taskType = taskType;
     Task.allTasks[index].dueDate = dueDate;
