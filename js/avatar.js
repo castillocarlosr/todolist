@@ -50,11 +50,36 @@ addedElement.setAttribute('id', 'currentClass');
 userCurrentClass();
 
 //adding big character to character page
-//avatar = a variable to hold the users current avatar
-function characterAvatar() {
+
+// make a function where I generate an image element and attach it to characterAvatar then call the function each time
+function generateImage(targetImage) {
+  var img = document.createElement('img');
+  img.setAttribute('src', targetImage);
   var characterAvatar = document.getElementById('bigCharacter');
+  characterAvatar.appendChild(img);
+}
+
+function characterAvatar() {
   if (characterAvatar){
-    //characterAvatar.innerHTML = avatar;
+    if (currentPoints < 10){
+      generateImage('img/sick-girl.png');
+    } else if (currentPoints < 20) {
+      generateImage('img/farmer.png');
+    } else if (currentPoints < 50) {
+      avatarClass = 'Master Farmer';
+    } else if (currentPoints < 100) {
+      avatarClass = 'Craftsperson';
+    } else if (currentPoints < 200) {
+      avatarClass = 'Artisan';
+    } else if (currentPoints < 400) {
+      avatarClass = 'Lord';
+    } else if (currentPoints < 1000) {
+      avatarClass = 'Mage';
+    } else if (currentPoints < 2500) {
+      avatarClass = 'Royalty';
+    } else {
+      avatarClass = 'God';
+    }
   }
 }
 
