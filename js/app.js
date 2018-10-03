@@ -32,10 +32,11 @@ Task.allTasks = [];
 
 
 function buildTasks() {
-  new Task('Drink water', '', 'daily', 'EoD', 1);
-  new Task('Take 6000 steps', '', 'daily', 'EoD', 3);
-  new Task('Get 8 hours of sleep', '', 'daily', 'EoD', 3);
-  new Task('Graduate CodeFellows 201', 'Present this final project in front of the class on Friday!', 'toDo', 'EoD Friday', 5);
+  let todayDate = getDate();
+  new Task('Drink water', '', 'daily', todayDate, 1);
+  new Task('Take 6000 steps', '', 'daily', todayDate, 3);
+  new Task('Get 8 hours of sleep', '', 'daily', todayDate, 3);
+  new Task('Graduate CodeFellows 201', 'Present this final project in front of the class on Friday!', 'toDo', '2018-10-05', 5);
   localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
 }
 
