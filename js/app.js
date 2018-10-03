@@ -13,6 +13,8 @@ var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
 var todoModal = document.getElementById('todoModal');
 var dailyFieldset = document.getElementById('dailyFeildset');
+var recentDate = localStorage.getItem('date');
+var recentDay = recentDate.getDate();
 var currentPoints = 0;
 
 
@@ -466,3 +468,4 @@ function run() {
 }
 
 run();
+localStorage.setItem('date', recentDate);
