@@ -1,11 +1,11 @@
 
 # Project Title:  To-Do-List
 
-A collaberative project on a "to-do list" task browser.  Similar to the way people write on a piece of paper a list of tasks that need to be done.  We created 2 list boxes.  One for daily tasks.  The other for non-daily tasks with a due date.
+A collaberative project on a "to-do list" task browser.  Similar to the way people write on a piece of paper a list of tasks that need to be done.  We created 2 list boxes.  One for daily tasks.  The other for non-daily tasks with a due date. 
 
 ## Getting started on your to-do list
 
-Add some tasks you need to perform.  Set the level on easy, medium, or hard.  This is an honor system for now.
+Add some tasks you need to perform.  Set the level on easy, medium, or hard.  This is an honor system for now.  :heavy_check_mark:
 
 ### Break down of the in's and out.
 
@@ -15,33 +15,31 @@ If you have a hard time remembering what tasks you need to do throughout the day
 
 This app was written in HTML, CSS, and Javascript only.
 
-
 ## Version
 
-Last update on October 03, 2018
+- Repo set-up on September 28, 2018
+- ~~Last update on October 01, 2018~~
+- ~~Last update on October 02, 2013~~
+- Last update on October 03, 2018
 
 ## Authors
 
-Lena Eivy,
-Blaise Clarke, 
-Peter Bucy,
-Carlos Castillo
+- *Lena Eivy*       @applena
+- *Blaise Clarke*   @Dervival
+- *Peter Bucy*      @PeterBucy
+- *Carlos Castillo*  @castillocarlosr
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
 ## Acknowledgments
-
-* Hat tip to anyone whose code was used
-
 * Inspiration
 Inspiration and big thanks given to the Code Fellows instructor Amanda Iverson & John Cokos.
 Special thanks to all the TA's that helped throughout the project week.
 
-
 * Images
 Logo created by Lena Eivy using Photoshop.
-Favicon created by Carlos Castillo using iPhoto editor and converted to ico using ICO converter website.
-Pixel character gotten from
-* etc
+Favicon created by Carlos Castillo using iPhoto editor and converted to 'ico' format using ICO converter website.
+Pixel character made by Freepik from (http://www.flaticon.com) is licensed by CC 3.0 BY (https://creativecommons.org/licenses/by/3.0/)
+* CodeFellows Code201
