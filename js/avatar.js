@@ -2,7 +2,6 @@
 
 var userName = localStorage.getItem('name');
 var avatarClass = 'Peasant';
-// var fireworkClass = 'fireworksOnOff';
 var currentPoints = 0;
 loadCurrentPoints();
 
@@ -24,7 +23,7 @@ addedElement.setAttribute('id', 'currentClass');
 function characterAvatar() {
   var characterAvatar = document.getElementById('bigCharacter');
   if (characterAvatar){
-    characterAvatar.innerHTML = avatar;
+    //characterAvatar.innerHTML = avatar;
   }
 }
 
