@@ -1,7 +1,7 @@
 
 loadCurrentPoints();
 var level = [0, 10, 20, 50, 100, 200, 400, 1000, 2500];
-
+var i = 0;
 Character.allCharacter = [];
 
 function Character(filename, filepath){
@@ -24,8 +24,7 @@ var picture2 = document.getElementById('slideimg1');
 
 
 function addImage(){
-    var i = 0;
-    if(currentPoints > level[i]){
+    if(currentPoints >= level[i]){
         i++
     }
     picture1.alt = Character.allCharacter[i-1].filename;
@@ -77,7 +76,7 @@ function removeClass(elem, name) {
 }
 
 function doAll(){
-    if (currentPoints > 10){
+    if (currentPoints >= 10){
 addImage();
 changePic();
 }
