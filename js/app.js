@@ -7,6 +7,7 @@ var lastLookedAtName = '';
 var addDaily = document.getElementById('dailyForm');
 var addToDo = document.getElementById('todoForm');
 var updateDailyObjectForm = document.getElementById('dailyDetails');
+var updateTodoObjectForm = document.getElementById('todoForm');
 var dailyListHead = document.getElementById('dailyLegend');
 var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
@@ -159,9 +160,11 @@ function renderToDo() {
         inputElement.setAttribute('checked', '');
       }
       addElement('span', Task.allTasks[i].name, labelElement);
+      let modalElement = addElement('p', 'Click me for more details', labelElement);
+      modalElement.addEventListener('click', todoDetailHandler);
+
       inputElement.setAttribute('type', 'checkbox');
       inputElement.setAttribute('value', Task.allTasks[i].name);
-
       inputElement.addEventListener('click', checkboxHandler);
     }
     else {
@@ -324,7 +327,48 @@ function dailyDetailHandler(event) {
   dailyTaskDifficulty.children[displayDifficultyElement].setAttribute('selected', 'selected');
 }
 
+
+/////////to make the todo task detail form appear//////////////
+// Get the todo detail modal
+var todoDetailModal = document.getElementById('todoDetailModal');
+
+//event handler for when "Click Me" text area is clicked
+function todoDetailHandler(event) {
+  event.preventDefault();
+  let targetedValue = event.target.previousSibling.innerHTML;
+  lastLookedAtName = targetedValue;
+  let targetedTask = '';
+  for (let i = 0; i < Task.allTasks.length; i++) {
+    if (Task.allTasks[i].name === targetedValue) {
+      targetedTask = Task.allTasks[i];
+    }
+  }
+  console.log(event.target.previousSibling.value + ' was pressed.');
+  let todoTaskName = document.getElementById('todoDetailTaskName');
+  todoTaskName.setAttribute('value', targetedTask.name);
+  todoDetailModal.style.display = 'block';
+  let todoTaskDesc = document.getElementById('todoDetailTaskDesc');
+  todoTaskDesc.setAttribute('value', targetedTask.description);
+  let todoDueDate = document.getElementById('todoDetailDueDate');
+  todoDueDate.setAttribute('value', targetedTask.dueDate);
+  let todoTaskDifficulty = document.getElementById('todoDetailTaskDifficulty');
+  let displayDifficultyElement = 0;
+  switch (targetedTask.value) {
+  case 1:
+    displayDifficultyElement = 0;
+    break;
+  case 3:
+    displayDifficultyElement = 1;
+    break;
+  case 5:
+    displayDifficultyElement = 2;
+    break;
+  }
+  todoTaskDifficulty.children[displayDifficultyElement].setAttribute('selected', 'selected');
+}
+
 function updateCurrentTask() {
+  console.log("in updateCurrentTask");
   event.preventDefault();
   let newDailyTaskName = event.target.taskname.value;
   let taskDiff = event.target.difficulity.value;
@@ -345,7 +389,32 @@ function updateCurrentTask() {
   renderDaily();
 }
 
+function updateToDoTask() {
+  console.log('before the preventDefault');
+  event.preventDefault();
+  let newDailyTaskName = event.target.taskname.value;
+  let taskDiff = event.target.difficulity.value;
+  let taskPoints = 0;
+  switch (taskDiff) {
+  case 'easy':
+    taskPoints = 1;
+    break;
+  case 'medium':
+    taskPoints = 3;
+    break;
+  case 'hard':
+    taskPoints = 5;
+    break;
+  }
+  let taskDesc = event.target.taskdescription.value;
+  let taskDue = event.target.dueDate.value;
+  updateTask(lastLookedAtName, taskDesc, 'toDo', taskDue, taskPoints, newDailyTaskName);
+  todoDetailModal.style.display = 'none';
+  renderToDo();
+}
+
 updateDailyObjectForm.addEventListener('submit', updateCurrentTask);
+updateTodoObjectForm.addEventListener('submit', updateToDoTask);
 
 function changePic() {
   var timer = setInterval(nextImage, 2000);
