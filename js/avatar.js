@@ -6,7 +6,9 @@ var currentPoints = 0;
 
 var getAvatar = document.getElementById('avatar');
 var addedElement = addElement('p', currentPoints.toString(), getAvatar);
+var pScore = document.createTextNode('  points');
 addedElement.setAttribute('id', 'displayedPoints');
+displayedPoints.appendChild(pScore);
 
 var className = document.createTextNode(avatarClass);
 var classNameElement = document.createElement('p');
@@ -17,7 +19,7 @@ addedElement.setAttribute('id', 'currentClass');
 
 // below are fireworks on and off
 function isNotFive() {
-  if ((currentPoints % 5) == 0){
+  if ((currentPoints % 5) === 0){
     //console.log('false1');
     return(false);
   }
@@ -27,7 +29,7 @@ function isNotFive() {
   }
 }
 // if (isNotFive())
-if (true){
+if (5){
   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
   var sheetParent = sheetToBeRemoved.parentNode;
   sheetParent.removeChild(sheetToBeRemoved);
@@ -61,6 +63,15 @@ if (true){
 //   }
 // };
 
+// function isNotFive() {
+//   if ((currentPoints % 5) === 0){
+//     //console.log('false1');
+//     return(init(), draw());
+//   }
+//   else{
+//     console.log('no fireworks');
+//   }
+// }
 
 //adding big character to character page
 //avatar = a variable to hold the users current avatar
@@ -84,7 +95,7 @@ function characterName() {
 function characterPoints() {
   var characterPoints = document.getElementById('characterPoints');
   if (characterPoints) {
-    characterPoints.innerHTML = currentPoints + ' points';
+    characterPoints.innerHTML = currentPoints + '  points Look into why this is not showing up';
   }
 }
 
@@ -129,9 +140,10 @@ function characterNext() {
   }
 }
 
+characterPoints();
 characterAvatar();
 characterName();
-characterPoints();
 characterNext();
+
 
 

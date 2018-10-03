@@ -1,197 +1,187 @@
-//credit give to Brian Douglas from https://github.com/BrianDGLS/canvas-fireworks
+//Credit given to Chris from England, Oxfordshire at https://codepen.io/chrisyboy53/
 
-const c = document.createElement('canvas');
-const $ = c.getContext('2d');
-const h = c.height = 420;
-const w = c.width = h * 1.618;
+var rnd = Math.random,
+  flr = Math.floor;
 
-document.body.appendChild(c);
+let canvas = document.createElement('canvas');
+document.getElementsByTagName('body')[0].appendChild(canvas);
+canvas.style.position = 'absolute';
+canvas.style.width = '100%';
+canvas.style.height = '100%';
 
-const GRAVITY = 0.04;
+canvas.width = canvas.clientWidth;
+canvas.height = canvas.clientHeight;
 
-const color = (h = 0, s = 100, l = 100, a = 1) => `hsla(${h}, ${s}%, ${l}%, ${a})`;
+let ctx = canvas.getContext('2d');
 
-const randomFloat = (min, max) => Math.random() * (max - min) + min;
+function rndNum(num) {
+  return rnd() * num + 1;
+}
 
-const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+function vector(x, y) {
+  this.x = x;
+  this.y = y;
 
-const cleanFrame = (opacity) => {
-  $.globalCompositeOperation = 'source-over';
-  $.fillStyle = `rgba(0,0,0,${opacity})`;
-  $.fillRect(0, 0, w, h);
-  $.globalCompositeOperation = 'lighter';
-};
-
-class FireWork {
-  constructor({
-    x,
-    y,
-    vx,
-    vy,
-    size,
-    hue
-  }) {
-    this.setPosition(x, y);
-    this.setVelocity(vx, vy);
-
-    this.size = size;
-
-    this.hue = hue || 0;
-    this.alpha = 1;
-  }
-
-  setPosition(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  setVelocity(vx, vy) {
-    this.vx = vx;
-    this.vy = vy;
-  }
-
-  render() {
-    $.fillStyle = color(this.hue, 50, 50, this.alpha);
-    $.beginPath();
-    $.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
-    $.fill();
+  this.add = function(vec2) {
+    this.x = this.x + vec2.x;
+    this.y = this.y + vec2.y;
   }
 }
 
-class ExplodingFireWork extends FireWork {
-  constructor(options) {
-    super(options);
+function particle(pos, vel) {
+  this.pos = new vector(pos.x, pos.y);
+  this.vel = vel;
+  this.dead = false;
+  this.start = 0;
 
-    this.exploded = false;
-    this.explodePoint = randomNumber(100, h / 2);
+  this.update = function(time) {
+    let timeSpan = time - this.start;
+
+    if (timeSpan > 500) {
+      this.dead = true;
+    }
+
+    if (!this.dead) {
+      this.pos.add(this.vel);
+      this.vel.y = this.vel.y + gravity;
+    }
+  };
+
+  this.draw = function() {
+    if (!this.dead) {
+      drawDot(this.pos.x, this.pos.y, 1);
+    }
   }
 
-  update() {
-    this.x += this.vx;
-    this.y += this.vy;
+}
 
-    if (this.y < h / 2) this.vy += GRAVITY;
+function firework(x, y) {
 
-    if (!this.exploded) {
-      if (this.vy >= 0 || this.y < this.explodePoint) {
-        explode(this);
+  this.pos = new vector(x, y);
+  this.vel = new vector(0, -rndNum(10) - 3);
+  this.color = 'hsl(' + rndNum(360) + ', 100%, 50%)'
+  this.size = 4;
+  this.dead = false;
+  this.start = 0;
+  let exParticles = [],
+    exPLen = 100;
 
-        this.alpha = 0;
-        this.exploded = true;
+  let rootShow = true;
+
+  this.update = function(time) {
+    if (this.dead) {
+      return;
+    }
+
+    rootShow = this.vel.y < 0;
+
+    if (rootShow) {
+      this.pos.add(this.vel);
+      this.vel.y = this.vel.y + gravity;
+    } else {
+      if (exParticles.length === 0) {
+        flash = true;
+        for (let i = 0; i < exPLen; i++) {
+          exParticles.push(new particle(this.pos, new vector(-rndNum(10) + 5, -rndNum(10) + 5)));
+          exParticles[exParticles.length - 1].start = time;
+        }
+      }
+      let numOfDead = 0;
+      for (let i = 0; i < exPLen; i++) {
+        let p = exParticles[i];
+        p.update(time);
+        if (p.dead) {
+          numOfDead++;
+        }
+      }
+
+      if (numOfDead === exPLen) {
+        this.dead = true;
+      }
+
+    }
+  }
+
+  this.draw = function() {
+    if (this.dead) {
+      return;
+    }
+
+    ctx.fillStyle = this.color;
+    if (rootShow) {
+      drawDot(this.pos.x, this.pos.y, this.size);
+    } else {
+      for (let i = 0; i < exPLen; i++) {
+        let p = exParticles[i];
+        p.draw();
       }
     }
   }
+
 }
 
-class FadingFireWork extends FireWork {
-  constructor(options) {
-    super(options);
+function drawDot(x, y, size) {
+  ctx.beginPath();
+
+  ctx.arc(x, y, size, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.closePath();
+}
+
+var fireworks = [],
+  gravity = 0.2,
+  snapTime = 0,
+  flash = false;
+
+function init() {
+  let numOfFireworks = 20;
+  for (let i = 0; i < numOfFireworks; i++) {
+    fireworks.push(new firework(rndNum(canvas.width), canvas.height));
   }
+}
 
-  update() {
-    this.x += this.vx;
-    this.y += this.vy;
+function update(time) {
+  for (let i = 0, len = fireworks.length; i < len; i++) {
+    let p = fireworks[i];
+    p.update(time);
+  }
+}
 
-    this.vy += GRAVITY;
+function draw(time) {
+  update(time);
 
-    if (this.alpha) {
-      this.alpha -= 0.03;
+  ctx.fillStyle = 'rgba(250,250,250,0.03)';
+  if (flash) {
+    flash = false;
+  }
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = 'white';
+  ctx.font = "30px Arial";
+  let newTime = time - snapTime;
+  snapTime = time;
+
+  //ctx.fillText(newTime,10,50);
+
+  ctx.fillStyle = 'blue';
+  for (let i = 0, len = fireworks.length; i < len; i++) {
+    let p = fireworks[i];
+    if (p.dead) {
+      fireworks[i] = new firework(rndNum(canvas.width), canvas.height);
+      p = fireworks[i];
+      p.start = time;
     }
+    p.draw();
   }
+
+  window.requestAnimationFrame(draw);
 }
 
-class FireWorkDisplay {
-  constructor(limit = 5) {
-    this.limit = limit;
-    this.fireworks = [];
-  }
+window.addEventListener('resize', function() {
+  canvas.width = canvas.clientWidth;
+  canvas.height = canvas.clientHeight;
+});
 
-  add(firework) {
-    this.fireworks.push(firework);
-  }
-
-  remove(firework) {
-    this.fireworks = this.fireworks.filter(x => x !== firework);
-  }
-
-  render() {
-    this.fireworks.map(x => x.render());
-  }
-
-  update() {
-    this.fireworks.map(x => {
-      x.update();
-      if (x.alpha <= 0) this.remove(x);
-      if (x.exploded) this.remove(x);
-    });
-  }
-}
-
-const STAGE = new FireWorkDisplay(10);
-
-function igniteNewFireWork() {
-  const hues = [
-    randomNumber(0, 20),
-    randomNumber(10, 30),
-    randomNumber(60, 80),
-    randomNumber(250, 280)
-  ];
-
-  const firework = new ExplodingFireWork({
-    x: randomNumber(w / 2 - 100, w / 2 + 100),
-    y: h,
-    vx: randomFloat(-1, 1),
-    vy: randomFloat(2, 4) * -1,
-    size: randomNumber(1, 3),
-    hue: hues[randomNumber(0, hues.length - 1)]
-  });
-
-  STAGE.add(firework);
-}
-
-function explode(firework) {
-  const embers = 11;
-  const radius = 5;
-
-  for (let i = 0; i < embers; ++i) {
-    const ember = new FadingFireWork({
-      x: firework.x,
-      y: firework.y,
-      vx: radius * Math.cos(2 * Math.PI * i / embers),
-      vy: radius * Math.sin(2 * Math.PI * i / embers),
-      size: firework.size + 1,
-      hue: firework.hue
-    });
-
-    STAGE.add(ember);
-  }
-}
-
-function draw() {
-  requestAnimationFrame(draw);
-  cleanFrame(0.1);
-
-  if (STAGE.fireworks.filter(x => !x.exploded).length < STAGE.limit) {
-    igniteNewFireWork();
-  }
-
-  STAGE.update();
-  STAGE.render();
-}
-
-function startFireWorkDisplay() {
-  $.fillStyle = '#000';
-  $.fillRect(0, 0, w, h);
-
-  // Add user input
-  //change to goal from app js
-  const input = document.getElementById('fireWorkCount');
-
-  input.onchange = () => {
-    STAGE.limit = input.options[input.selectedIndex].value;
-  };
-
-  draw();
-}
-
-startFireWorkDisplay();
+init();
+draw();

@@ -168,6 +168,14 @@ input[type=checkbox]:checked + span{
   padding: 20px;
 }
 
+#displayedPoints{
+  margin-left: 3.5em;
+}
+
+#currentClass{
+  margin-left: 3.5em;
+}
+
 .clear {
   clear:both;
 }
