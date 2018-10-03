@@ -2,9 +2,11 @@
 
 //Removes the fireworks at start-up
 
+var lastLookedAtName = '';
 
 var addDaily = document.getElementById('dailyForm');
 var addToDo = document.getElementById('todoForm');
+var updateDailyObjectForm = document.getElementById('dailyDetails');
 var dailyListHead = document.getElementById('dailyLegend');
 var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
@@ -109,6 +111,8 @@ function renderDaily(){
       let labelElement = addElement('label', '' , fieldsetElement);
       let inputElement = addElement('input', '' ,labelElement);
       addElement('span', Task.allTasks[i].name, labelElement);
+      let modalElement = addElement('p', 'Click me', labelElement);
+      modalElement.addEventListener('click', dailyDetailHandler);
       
       inputElement.setAttribute('type', 'checkbox');
       inputElement.setAttribute('value', Task.allTasks[i].name);
@@ -248,7 +252,64 @@ function checkboxHandler() {
   }
 }
 
+/////////to make the daily task detail form appear//////////////
+// Get the daily detail modal
+var dailyDetailModal = document.getElementById('dailyDetailModal');
 
+//event handler for when "Click Me" text area is clicked
+function dailyDetailHandler(event){
+  event.preventDefault();
+  let targetedValue = event.target.previousSibling.innerHTML;
+  lastLookedAtName = targetedValue;
+  let targetedTask = '';
+  for (let i = 0; i < Task.allTasks.length; i++){
+    if(Task.allTasks[i].name === targetedValue){
+      targetedTask = Task.allTasks[i];
+    }
+  }
+  console.log(event.target.previousSibling.value + ' was pressed.');
+  let dailyTaskName = document.getElementById('dailyDetailTaskName');
+  // dailyTaskName.setAttribute('value', targetedTask.name);
+  dailyTaskName.setAttribute('value', targetedTask.name);
+  dailyDetailModal.style.display = 'block';
+  let dailyTaskDifficulty = document.getElementById('dailyDetailTaskDifficulty');
+  let displayDifficultyElement = 0;
+  switch(targetedTask.value){
+  case 1:
+    displayDifficultyElement = 0;
+    break;
+  case 3:
+    displayDifficultyElement = 1;
+    break;
+  case 5:
+    displayDifficultyElement = 2;
+    break;
+  }
+  dailyTaskDifficulty.children[displayDifficultyElement].setAttribute('selected', 'selected');
+}
+
+function updateCurrentTask(){
+  event.preventDefault();
+  let newDailyTaskName = event.target.taskname.value;
+  let taskDiff = event.target.difficulity.value;
+  let taskPoints = 0;
+  switch(taskDiff){
+  case 'easy':
+    taskPoints = 1;
+    break;
+  case 'medium':
+    taskPoints = 3;
+    break;
+  case 'hard':
+    taskPoints = 5;
+    break;
+  }
+  updateTask(lastLookedAtName,'','daily','end of day today', taskPoints, newDailyTaskName);
+  dailyDetailModal.style.display = 'none';
+  renderDaily();
+}
+
+updateDailyObjectForm.addEventListener('submit', updateCurrentTask);
 
 function changePic(){
   var timer = setInterval(nextImage, 2000);
