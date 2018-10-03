@@ -164,6 +164,37 @@
         
     </div>
 
+    <!-- The Todo Detail Modal -->
+    <div id="todoDetailModal" class="modal">
+
+        <!-- Detail Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="todoDetails">
+                <fieldset>
+                    <label> Task Name:
+                        <input type="text" name="taskname">
+                    </label>
+                    <label> Description:
+                        <input type="text" name="taskdescription">
+                    </label>
+                    <label> Due Date:
+                        <input type="date" name="dueDate">
+                    </label>
+                    <label>Difficulity
+                        <select name="difficulity">
+                            <option value="easy">easy</option>
+                            <option value="medium">medium</option>
+                            <option value="hard">hard</option>
+                        </select>
+                    </label>
+                    <input id="todoButton" type="submit" value="Submit">
+                </fieldset>
+            </form>
+        </div>
+  
+    </div>
+
 </main>
 <div class="clear">
     <footer>  
