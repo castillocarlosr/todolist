@@ -1,6 +1,7 @@
 body {
   color: #272f3d;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: x-large;
   margin:auto;
   width: 90%;
 }
@@ -48,8 +49,6 @@ footer {
 
 footer p {
   display: inline-block;
-  position: absolute;
-  bottom: 0;
 }
 
 canvas{
@@ -62,13 +61,23 @@ a {
   color: #7a8aa8;
 }
 
+button {
+  font-size: larger;
+  width: 100%;
+}
+
 a:hover {
   color: #5063a1;
 }
 
 #fireSentence {
   float: right;
-  width: 50px;
+  padding-top: 100px;
+  width: 130px;
+}
+
+#fireSentence button {
+  width: 100px;
 }
 
 #logo {
