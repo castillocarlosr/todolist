@@ -413,6 +413,77 @@ function updateToDoTask() {
 updateDailyObjectForm.addEventListener('submit', updateCurrentTask);
 updateTodoObjectForm.addEventListener('submit', updateToDoTask);
 
+//when the date value is 12am
+//look in LS for the 'tasks'
+//parse JSON to access the array
+//grab the tasks that have task type = 'daily'
+//change status to 'open'
+//clear current dailies
+// renderDaily()
+
+//get old date
+//parse it to get old hour
+//compare it to new date
+//if not the same: run the function
+//store new date to local storage
+
+
+//make it possible to force a date to be saved
+function forceDateExistence(){
+  var savedDate = localStorage.getItem('date');
+  if(!savedDate){
+    saveDate(getDate());
+  }
+}
+
+function getDate(){
+  var newDate = new Date();
+  return newDate.getDate();
+}
+
+function saveDate(dateString){
+  localStorage.setItem('date', JSON.stringify(dateString));
+}
+
+function compareDateToSaved(){
+  var currentDate = getDate();
+  var savedDate = localStorage.getItem('date');
+  savedDate = JSON.parse(savedDate);
+  console.log('compareDateToSaved resulted in ' + (currentDate === savedDate));
+  return (currentDate === savedDate);
+}
+
+function checkIfNewDate(){
+  forceDateExistence();
+  if(!compareDateToSaved()){
+    console.log('date mismatch, calling repopulateDailies');
+    repopulateDailies();
+  }
+}
+checkIfNewDate();
+
+function repopulateDailies() {
+  var tasks = localStorage.getItem('tasks');
+  var currentTasks = JSON.parse(tasks);
+  console.log(currentTasks);
+  for (var i=0; i < currentTasks.length; i++) {
+    console.log(currentTasks[i].taskType + ' ' + currentTasks[i].completionState);
+    if (currentTasks[i].taskType === 'daily') {
+      currentTasks[i].completionState = 'open';
+    }
+  }
+  localStorage.setItem('tasks', JSON.stringify(currentTasks));
+  generateTasks();
+  renderDaily();
+}
+
+
+// if (currentDate !== recentDay) {
+//   repopulateDailies();
+// }
+
+
+
 function changePic() {
   var timer = setInterval(nextImage, 2000);
   var curImage = 0;
@@ -463,4 +534,3 @@ function run() {
 }
 
 run();
-localStorage.setItem('date', recentDate);
