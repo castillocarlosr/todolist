@@ -1,7 +1,8 @@
 'use strict';
 
+var userName = localStorage.getItem('name');
 var avatarClass = 'Peasant';
-var fireworkClass = 'fireworksOnOff';
+//var fireworkClass = 'fireworksOnOff';
 var currentPoints = 0;
 
 var getAvatar = document.getElementById('avatar');
@@ -18,22 +19,22 @@ addedElement = getAvatar.insertBefore(classNameElement, getAvatar.firstChild);
 addedElement.setAttribute('id', 'currentClass');
 
 // below are fireworks on and off
-function isNotFive() {
-  if ((currentPoints % 5) === 0){
-    //console.log('false1');
-    return(false);
-  }
-  else{
-    //console.log('true2');
-    return(true);
-  }
-}
-// if (isNotFive())
-if (5){
-  var sheetToBeRemoved = document.getElementById('fireworksOnOff');
-  var sheetParent = sheetToBeRemoved.parentNode;
-  sheetParent.removeChild(sheetToBeRemoved);
-}
+// function isNotFive() {
+//   if ((currentPoints % 5) === 0){
+//     //console.log('false1');
+//     return(false);
+//   }
+//   else{
+//     //console.log('true2');
+//     return(true);
+//   }
+// }
+// // if (isNotFive())
+// if (5){
+//   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
+//   var sheetParent = sheetToBeRemoved.parentNode;
+//   sheetParent.removeChild(sheetToBeRemoved);
+// }
 
 //might work below but so far not working for Carlos.
 // var isNotFive = function(currentPoints) {
@@ -95,7 +96,7 @@ function characterName() {
 function characterPoints() {
   var characterPoints = document.getElementById('characterPoints');
   if (characterPoints) {
-    characterPoints.innerHTML = currentPoints + '  points Look into why this is not showing up';
+    characterPoints.innerHTML = currentPoints;
   }
 }
 
