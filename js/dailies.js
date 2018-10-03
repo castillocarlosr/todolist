@@ -8,26 +8,36 @@
 //clear current dailies
 // renderDaily()
 
+//get old date
+//parse it to get old hour
+//compare it to new date
+  //if not the same: run the function
+//store new date to local storage
+
 
 var dateNew = new Date();
+var currentDate = dateNew.getDate();
+var recentDate = localStorage.getItem('date');
+var recentDay = recentDate.getDate();
 
-var currentHour = dateNew.getHours();
+
 
 function repopulateDailies() {
-  if (currentHour === 0) {
-    var tasks = localStorage.getItem('tasks');
-    var currentTasks = JSON.parse(tasks);
-    console.log(currentTasks);
+  var tasks = localStorage.getItem('tasks');
+  var currentTasks = JSON.parse(tasks);
 
-    for (var i=0; i < currentTasks.length; i++) {
-      if (currentTasks[i].type.value === 'daily') {
-        currentTasks[i].status.value = 'open';
-      }
-
-      renderDaiy();
-
+  for (var i=0; i < currentTasks.length; i++) {
+    if (currentTasks[i].type.value === 'daily') {
+      currentTasks[i].status.value = 'open';
     }
+
+    renderDaiy();
   }
+  localStorage.setItem('date', recentDate);
 }
 
-setInterval(repopulateDailies, 60000);
+
+if (currentDate !== recentDay) {
+  repopulateDailies();
+}
+
