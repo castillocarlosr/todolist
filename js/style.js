@@ -24,6 +24,15 @@ window.onclick = function(event) {
   if (event.target === dailyModal) {
     dailyModal.style.display = 'none';
   }
+  else if (event.target === todoModal) {
+    todoModal.style.display = 'none';
+  }
+  else if (event.target === dailyDetailModal) {
+    dailyDetailModal.style.display = 'none';
+  }
+  else if (event.target === todoDetailModal) {
+    todoDetailModal.style.display = 'none';
+  }
 };
 
 ////////////to make the todo form appear////////////////
@@ -47,13 +56,6 @@ closeOne.onclick = function() {
   todoModal.style.display = 'none';
 };
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target === todoModal) {
-    todoModal.style.display = 'none';
-  }
-};
-
 /////////to make the daily task detail form appear//////////////
 // Get the daily detail modal
 var dailyDetailModal = document.getElementById('dailyDetailModal');
@@ -68,13 +70,6 @@ closeDailyDetail.onclick = function() {
   dailyDetailModal.style.display = 'none';
 };
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target === dailyDetailModal) {
-    dailyDetailModal.style.display = 'none';
-  }
-};
-
 /////////to make the daily task detail form appear//////////////
 // Get the todo detail modal
 var todoDetailModal = document.getElementById('todoDetailModal');
@@ -85,11 +80,4 @@ var closeToDoDetail = document.getElementsByClassName('close')[4];
 // When the user clicks on <span> (x), close the modal
 closeToDoDetail.onclick = function() {
   todoDetailModal.style.display = 'none';
-};
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target === dailyDetailModal) {
-    todoDetailModal.style.display = 'none';
-  }
 };
