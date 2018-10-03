@@ -18,7 +18,7 @@ This app was written in HTML, CSS, and Javascript only.
 
 ## Version
 
-Last update on October 02, 2018
+Last update on October 03, 2018
 
 ## Authors
 
@@ -26,7 +26,6 @@ Lena Eivy,
 Blaise Clarke, 
 Peter Bucy,
 Carlos Castillo
-
 
 ## License
 
@@ -37,7 +36,12 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Hat tip to anyone whose code was used
 
 * Inspiration
+Inspiration and big thanks given to the Code Fellows instructor Amanda Iverson & John Cokos.
+Special thanks to all the TA's that helped throughout the project week.
+
 
 * Images
-
+Logo created by Lena Eivy using Photoshop.
+Favicon created by Carlos Castillo using iPhoto editor and converted to ico using ICO converter website.
+Pixel character gotten from
 * etc
