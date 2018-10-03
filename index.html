@@ -15,15 +15,13 @@
             <div id="before" class="beforeClass"></div>
             <div id="after"></div>
         </div>
-        <div id="avatar">
-            
-            <!-- <a href ="character.html"><img id = "smallAvatar" src="img/sick-girl.png"/></a> -->
-            <img id = 'slideimg0' id = "smallAvatar" class = "slide showMe"src="img/sick-girl.png" >
-            <img id = 'slideimg1' class = "slide" src="img/knight idle.gif" >
 
-            
-            
-        </div>
+        <a href ="character.html">
+            <div id="avatar">
+                <img id = 'slideimg0' id = "smallAvatar" class = "slide showMe" src="img/sick-girl.png"/>
+                <img id = 'slideimg1' class = "slide" src="img/knight idle.gif" > 
+            </div>
+        </a>
         <div id="logo">
             <img src="img/logo.png" />
         </div>
@@ -105,7 +103,8 @@
                 </label>
             </fieldset>
         </form>
-        <!-- The Daily Modal -->
+
+        <!-- The ToDo Modal -->
         <div id="todoModal" class="modal">
 
                 <!-- Modal content -->
@@ -135,35 +134,35 @@
                 </div>
     
         </div>
-        </div>
-        <div id="intakeModal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div>
-                <p>Welcome to The List Keepr!</p>
-                <p>In the "To Do Section" - keep track of all the things that need doing in your life</p>
-                <p>In the "Daily Tasks Section" - keep track of things you want to do everyday to build better habbits.</p>
-                <p>Each goal get assigned "easy", "medium", or "hard". Hard tasks are worth more experience points than easy tasks. The more experience points you earn the better your avatar does. Earn enough points, and you can level up! </p>
-                <p>We've got some starter goals suggested for you based on your what goals are most important to you.</p>          
+    </div>
+    <div id="intakeModal">
+            <!-- Intake Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div>
+                    <h3>Welcome to The List Keepr!</h3>
+                    <p>In the "To Do Section" - keep track of all the things that need doing in your life</p>
+                    <p>In the "Daily Tasks Section" - keep track of things you want to do everyday to build better habbits.</p>
+                    <p>Each goal get assigned "easy", "medium", or "hard". Hard tasks are worth more experience points than easy tasks. The more experience points you earn the better your avatar does. Earn enough points, and you can level up! </p>
+                    <p>We've got some starter goals suggested for you based on your what goals are most important to you.</p>          
+                </div>
+                <form id="intakeForm">
+                    <fieldset>
+                        <label> Name:
+                            <input id="formName" type="text" name="userName">
+                        </label>
+                        <label>What goal is most important to you?
+                            <select name="starterGoals">
+                                <option value="health">Improve My Health</option>
+                                <option value="balance">More Balance In My Life</option>
+                            </select>
+                        </label>
+                        <input id="intakeButton" type="submit" value="Submit">
+                    </fieldset>
+                </form>
             </div>
-            <form id="intakeForm">
-                <fieldset>
-                    <label> Name:
-                        <input id="formName" type="text" name="userName">
-                    </label>
-                    <label>What goal is most important to you?
-                        <select name="starterGoals">
-                            <option value="health">Improve My Health</option>
-                            <option value="balance">More Balance In My Life</option>
-                        </select>
-                    </label>
-                    <input id="intakeButton" type="submit" value="Submit">
-                </fieldset>
-            </form>
-        </div>
-    
-        </div>
+        
+    </div>
 
 </main>
 <div class="clear">

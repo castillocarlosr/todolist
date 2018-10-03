@@ -1,5 +1,6 @@
 'use strict';
 
+var userName = localStorage.getItem('name');
 var avatarClass = 'Peasant';
 // var fireworkClass = 'fireworksOnOff';
 var currentPoints = 0;
@@ -95,7 +96,7 @@ function characterName() {
 function characterPoints() {
   var characterPoints = document.getElementById('characterPoints');
   if (characterPoints) {
-    characterPoints.innerHTML = currentPoints + '  points Look into why this is not showing up';
+    characterPoints.innerHTML = currentPoints;
   }
 }
 
