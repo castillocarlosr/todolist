@@ -48,6 +48,8 @@ footer {
 
 footer p {
   display: inline-block;
+  position: absolute;
+  bottom: 0;
 }
 
 canvas{
@@ -62,6 +64,11 @@ a {
 
 a:hover {
   color: #5063a1;
+}
+
+#fireSentence {
+  float: right;
+  width: 50px;
 }
 
 #logo {

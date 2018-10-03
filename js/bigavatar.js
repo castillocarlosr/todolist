@@ -1,54 +1,6 @@
 'use strict';
 
 var userName = localStorage.getItem('name');
-var avatarClass = 'Peasant';
-var currentPoints = 0;
-loadCurrentPoints();
-
-//figures out the current class of user
-function userCurrentClass() {
-  if (currentPoints < 10){
-    avatarClass = 'Peasant';
-  } else if (currentPoints < 20) {
-    avatarClass = 'Farmer';
-  } else if (currentPoints < 50) {
-    avatarClass = 'Master Farmer';
-  } else if (currentPoints < 100) {
-    avatarClass = 'Craftsperson';
-  } else if (currentPoints < 200) {
-    avatarClass = 'Artisan';
-  } else if (currentPoints < 400) {
-    avatarClass = 'Lord';
-  } else if (currentPoints < 1000) {
-    avatarClass = 'Mage';
-  } else if (currentPoints < 2500) {
-    avatarClass = 'Royalty';
-  } else {
-    avatarClass = 'God';
-  }
-  console.log('I am a ' + avatarClass);
-  localStorage.setItem('class', avatarClass);
-  let currentClassElement = document.getElementById('currentClass');
-  console.log(currentClassElement);
-  currentClassElement.innerHTML = avatarClass;
-}
-
-//adding points below the header avatar
-var getAvatar = document.getElementById('avatar');
-var addedElement = addElement('p', currentPoints.toString(), getAvatar);
-var pScore = document.createTextNode('  points');
-addedElement.setAttribute('id', 'displayedPoints');
-displayedPoints.appendChild(pScore);
-
-//adding class above the header avatar
-var className = document.createTextNode(avatarClass);
-var classNameElement = document.createElement('p');
-classNameElement.appendChild(className);
-getAvatar = document.getElementById('avatar');
-addedElement = getAvatar.insertBefore(classNameElement, getAvatar.firstChild);
-addedElement.setAttribute('id', 'currentClass');
-userCurrentClass();
-
 //adding big character to character page
 
 // make a function where I generate an image element and attach it to characterAvatar then call the function each time
@@ -147,6 +99,3 @@ characterPoints();
 characterAvatar();
 characterName();
 characterNext();
-
-
-
