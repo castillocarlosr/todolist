@@ -7,7 +7,7 @@ body {
   background: transparent;
   overflow: hidden; }
 
-#fireworksOnOff > #before, #fireworksOnOff > #after {
+#fireworksOnOff:active {
   position: absolute;
   width: 5px;
   height: 5px;
