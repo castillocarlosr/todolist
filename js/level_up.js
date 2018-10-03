@@ -10,13 +10,14 @@ this.filepath = filepath;
 Character.allCharacter.push(this);
 }
 
-new Character('king', 'img/king.png');
-new Character('artist', 'img/artist.png');
+new Character('sick-girl', 'img/sick-girl.png');
 new Character('farmer', 'img/farmer.png');
-new Character('leader', 'img/leader.png');
 new Character('masterfarmer', 'img/masterfarmer.png');
+new Character('artist', 'img/artist.png');
+new Character('leader', 'img/leader.png');
+new Character('king', 'img/king.png');
 new Character('magicain', 'img/magician.png');
-new Character('queen', 'img/queen.png');
+new Character('king', 'img/king.png');
 new Character('zues', 'img/zues.png');
 
 var picture1 = document.getElementById('slideimg0');
