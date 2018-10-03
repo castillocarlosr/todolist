@@ -1,7 +1,7 @@
 
 loadCurrentPoints();
 var level = [0, 10, 20, 50, 100, 200, 400, 1000, 2500];
-
+var i = 0;
 Character.allCharacter = [];
 
 function Character(filename, filepath){
@@ -22,10 +22,8 @@ new Character('zues', 'img/zues.png');
 var picture1 = document.getElementById('slideimg0');
 var picture2 = document.getElementById('slideimg1');
 
-
 function addImage(){
-    var i = 0;
-    if(currentPoints > level[i]){
+    if(currentPoints >= level[i]){
         i++
     }
     picture1.alt = Character.allCharacter[i-1].filename;
@@ -33,13 +31,12 @@ function addImage(){
     picture2.alt = Character.allCharacter[i].filename;
     picture2.src = Character.allCharacter[i].filepath;
     
-    
 }
 
 
 
 function changePic(){
-var timer = setInterval(nextImage, 2000);
+var timer = setInterval(nextImage, 1000);
 var curImage = 0;
 var numImages = 2;
 
@@ -63,6 +60,7 @@ function nextImage(pic, pic2) {
     removeClass(pic2, "showMe");
 }
 
+
 function addClass(elem, name) {
     var change = elem.className;
     if (change) change += " ";  // if not blank, add a space separator
@@ -76,10 +74,12 @@ function removeClass(elem, name) {
 }
 }
 
+
 function doAll(){
-    if (currentPoints > 10){
+    if (currentPoints >= 10){
 addImage();
 changePic();
+characterImage();
 }
 else{
 
