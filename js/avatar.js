@@ -53,10 +53,12 @@ userCurrentClass();
 
 // make a function where I generate an image element and attach it to characterAvatar then call the function each time
 function generateImage(targetImage) {
-  var img = document.createElement('img');
-  img.setAttribute('src', targetImage);
-  var characterAvatar = document.getElementById('bigCharacter');
-  characterAvatar.appendChild(img);
+  if (generateImage){
+    var img = document.createElement('img');
+    img.setAttribute('src', targetImage);
+    var characterAvatar = document.getElementById('bigCharacter');
+    characterAvatar.appendChild(img);
+  }
 }
 
 function characterAvatar() {
