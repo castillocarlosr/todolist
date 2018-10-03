@@ -195,12 +195,12 @@ span + p {
 
 .modal-content {
   background-color: #fefefe;
+  border: 2px solid #888;
+  box-shadow: 5px 10px 5px #272f3d;
   clear: both;
   opacity: .9;
-  box-shadow: 5px 10px 5px #272f3d;
   margin: auto;
   padding: 20px;
-  border: 2px solid #888;
   width: 80%;
 }
 
