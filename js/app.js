@@ -412,8 +412,24 @@ function updateToDoTask() {
   renderToDo();
 }
 
+function deleteCurrentTask() {
+  event.preventDefault();
+  removeTask(lastLookedAtName);
+  dailyDetailModal.style.display = 'none';
+  renderDaily();
+}
+
+function deleteToDoTask() {
+  event.preventDefault();
+  removeTask(lastLookedAtName);
+  todoDetailModal.style.display = 'none';
+  renderToDo();
+}
+
 updateDailyObjectForm.addEventListener('submit', updateCurrentTask);
+updateDailyObjectForm.addEventListener('reset', deleteCurrentTask);
 updateTodoObjectForm.addEventListener('submit', updateToDoTask);
+updateTodoObjectForm.addEventListener('reset', deleteToDoTask);
 
 //when the date value is 12am
 //look in LS for the 'tasks'
