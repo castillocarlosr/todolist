@@ -28,6 +28,9 @@ function userCurrentClass() {
   }
 
   localStorage.setItem('class', avatarClass);
+  let currentClassElement = document.getElementById('currentClass');
+  console.log(currentClassElement);
+  currentClassElement.innerHTML = avatarClass;
 }
 
 //adding points below the header avatar
@@ -38,13 +41,13 @@ addedElement.setAttribute('id', 'displayedPoints');
 displayedPoints.appendChild(pScore);
 
 //adding class above the header avatar
-userCurrentClass();
 var className = document.createTextNode(avatarClass);
 var classNameElement = document.createElement('p');
 classNameElement.appendChild(className);
 getAvatar = document.getElementById('avatar');
 addedElement = getAvatar.insertBefore(classNameElement, getAvatar.firstChild);
 addedElement.setAttribute('id', 'currentClass');
+userCurrentClass();
 
 //adding big character to character page
 //avatar = a variable to hold the users current avatar
