@@ -87,7 +87,22 @@ span + p {
 
 #avatar img {
   margin: 10px 0;
+  position: absolute;
+  top: 60px;
+  left: 100px;
   width: 100px;
+}
+
+#avatar p:first-child {
+  position: absolute;
+  left: 120px;
+  top: 20px;
+}
+
+#displayedPoints {
+  position: absolute;
+  left: 120px;
+  top: 40px;
 }
 
 #quote {
