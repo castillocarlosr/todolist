@@ -111,6 +111,9 @@ function renderDaily() {
     if (Task.allTasks[i].taskType === 'daily') {
       let labelElement = addElement('label', '', fieldsetElement);
       let inputElement = addElement('input', '', labelElement);
+      if(Task.allTasks[i].completionState === 'complete'){
+        inputElement.setAttribute('checked', '');
+      }
       addElement('span', Task.allTasks[i].name, labelElement);
       let modalElement = addElement('p', 'Click me', labelElement);
       modalElement.addEventListener('click', dailyDetailHandler);
@@ -135,6 +138,9 @@ function renderToDo() {
     if (Task.allTasks[i].taskType === 'toDo') {
       let labelElement = addElement('label', '', fieldsetElement);
       let inputElement = addElement('input', '', labelElement);
+      if(Task.allTasks[i].completionState === 'complete'){
+        inputElement.setAttribute('checked', '');
+      }
       addElement('span', Task.allTasks[i].name, labelElement);
       inputElement.setAttribute('type', 'checkbox');
       inputElement.setAttribute('value', Task.allTasks[i].name);
@@ -166,15 +172,15 @@ function updateDaily(event) {
   let taskDiff = event.target.difficulity.value;
   let taskPoints = 0;
   switch (taskDiff) {
-    case 'easy':
-      taskPoints = 1;
-      break;
-    case 'medium':
-      taskPoints = 3;
-      break;
-    case 'hard':
-      taskPoints = 5;
-      break;
+  case 'easy':
+    taskPoints = 1;
+    break;
+  case 'medium':
+    taskPoints = 3;
+    break;
+  case 'hard':
+    taskPoints = 5;
+    break;
   }
   addTask(newDailyTaskName, '', 'daily', 'end of day today', taskPoints);
   dailyModal.style.display = 'none';
@@ -199,15 +205,15 @@ function updateToDo(event) {
   let taskDueDate = event.target.dueDate.value;
   let taskPoints = 0;
   switch (taskDiff) {
-    case 'easy':
-      taskPoints = 1;
-      break;
-    case 'medium':
-      taskPoints = 3;
-      break;
-    case 'hard':
-      taskPoints = 5;
-      break;
+  case 'easy':
+    taskPoints = 1;
+    break;
+  case 'medium':
+    taskPoints = 3;
+    break;
+  case 'hard':
+    taskPoints = 5;
+    break;
   }
   addTask(newTodoTaskName, newTodoTaskDesc, 'toDo', taskDueDate, taskPoints);
   todoModal.style.display = 'none';
@@ -284,15 +290,15 @@ function dailyDetailHandler(event) {
   let dailyTaskDifficulty = document.getElementById('dailyDetailTaskDifficulty');
   let displayDifficultyElement = 0;
   switch (targetedTask.value) {
-    case 1:
-      displayDifficultyElement = 0;
-      break;
-    case 3:
-      displayDifficultyElement = 1;
-      break;
-    case 5:
-      displayDifficultyElement = 2;
-      break;
+  case 1:
+    displayDifficultyElement = 0;
+    break;
+  case 3:
+    displayDifficultyElement = 1;
+    break;
+  case 5:
+    displayDifficultyElement = 2;
+    break;
   }
   dailyTaskDifficulty.children[displayDifficultyElement].setAttribute('selected', 'selected');
 }
@@ -303,15 +309,15 @@ function updateCurrentTask() {
   let taskDiff = event.target.difficulity.value;
   let taskPoints = 0;
   switch (taskDiff) {
-    case 'easy':
-      taskPoints = 1;
-      break;
-    case 'medium':
-      taskPoints = 3;
-      break;
-    case 'hard':
-      taskPoints = 5;
-      break;
+  case 'easy':
+    taskPoints = 1;
+    break;
+  case 'medium':
+    taskPoints = 3;
+    break;
+  case 'hard':
+    taskPoints = 5;
+    break;
   }
   updateTask(lastLookedAtName, '', 'daily', 'end of day today', taskPoints, newDailyTaskName);
   dailyDetailModal.style.display = 'none';
@@ -329,8 +335,8 @@ function changePic() {
   function nextImage() {
     var pic;
     // remove showMe class from current image
-    pic = document.getElementById("slideimg" + curImage);
-    removeClass(pic, "");
+    pic = document.getElementById('slideimg' + curImage);
+    removeClass(pic, '');
 
     // compute next image
     curImage++;
@@ -340,22 +346,22 @@ function changePic() {
 
     // add showMe class to next image
 
-    pic = document.getElementById("slideimg" + curImage);
-    addClass(pic, "showMe");
-    pic2 = document.getElementById("slideimg0");
-    removeClass(pic2, "showMe");
+    pic = document.getElementById('slideimg' + curImage);
+    addClass(pic, 'showMe');
+    pic2 = document.getElementById('slideimg0');
+    removeClass(pic2, 'showMe');
   }
 
   function addClass(elem, name) {
     var change = elem.className;
-    if (change) change += " ";  // if not blank, add a space separator
+    if (change) change += ' '; // if not blank, add a space separator
     change += name;
     elem.className = change;
   }
 
   function removeClass(elem, name) {
     var change = elem.className;
-    elem.className = change.replace(name, "").replace(/   /g, " ").replace(/^ | $/g, "");  // remove name and extra blanks
+    elem.className = change.replace(name, '').replace(/ {3}/g, ' ').replace(/^ | $/g, ''); // remove name and extra blanks
   }
 }
 
