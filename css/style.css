@@ -82,21 +82,15 @@ a:hover {
   color: #5063a1;
 }
 
-#logo {
-  clear:both;
-}
-
-#fireSentence {
-  float: right;
-  width: 100px;
-}
-
-#fireSentence button {
-  width: 100px;
+#totalAvatar {
+ display: inline-block;
+ padding-top: 10px;
 }
 
 #logo {
+  display: inline-block;
   padding: 20px;
+  padding-left: 15%;
   text-align: center;
 }
 
@@ -118,22 +112,17 @@ span + p {
 
 #avatar img {
   margin: 10px 0;
-  position: absolute;
-  top: 70px;
-  left: 135px;
+  padding: 20px;
   width: 100px;
 }
 
-#avatar p:first-child {
-  position: absolute;
-  left: 140px;
-  top: 20px;
+#avatarLogo {
+  width: 80%;
+  margin:auto;
 }
 
-#displayedPoints {
-  position: absolute;
-  left: 138px;
-  top: 45px;
+#slideimg1 {
+  margin-left: -150px !important;
 }
 
 #quote {
