@@ -1,12 +1,17 @@
 'use strict';
 
-var avatarDom = document.getElementById('avatar');
+var curAvatarElement = document.getElementById('slideimg0');
+var nextAvatarElement = document.getElementById('slideimg1');
 var userName = localStorage.getItem('name');
 var getFireworks = document.getElementById('fireSentence');
 var avatarClass = 'Peasant';
+var avatarName = 'Peasant';
+var avatarURL = 'img/sick-girl.png';
 var currentPoints = 0;
 loadCurrentPoints();
 loadClassName();
+loadAvatarName();
+loadAvatarURL();
 
 function loadClassName() {
   let className = localStorage.getItem('class');
@@ -14,6 +19,31 @@ function loadClassName() {
     avatarClass = className;
   }
 }
+
+function loadAvatarName(){
+  let avName = localStorage.getItem('avatarName');
+  if(avName){
+    avatarName = avName;
+    curAvatarElement.alt = avName;
+  }
+}
+
+function loadAvatarURL(){
+  let avURL = localStorage.getItem('avatarURL');
+  if(avURL){
+    avatarURL = avURL;
+    curAvatarElement.src = avURL;
+  }
+}
+
+function saveAvatarName(){
+  localStorage.setItem('avatarName',avatarName);
+}
+
+function saveAvatarURL(){
+  localStorage.setItem('avatarURL',avatarURL);
+}
+
 //figures out the current class of user
 function userCurrentClass() {
   if (currentPoints < 10){
@@ -39,9 +69,8 @@ function userCurrentClass() {
   var oldClass = localStorage.getItem('class');
   if (oldClass !== avatarClass) {
     levelUpClass();
-    // levelUpAvatar();
-    levelUpFireworks();
-
+    levelUpAvatar();
+    //levelUpFireworks();
   }
 }
 
@@ -54,14 +83,38 @@ function levelUpClass(){
 function levelUpFireworks() {
   document.getElementById('fireSentence').classList.add('fire');
   console.log(document.getElementById('fireSentence'));
-  setTimeout(fireOff(), 2000);
+  setTimeout(fireOff, 2000);
 }
 
 function fireOff () {
   document.getElementById('fireSentence').classList.remove('fire');
 }
 
+function levelUpAvatar(){
+  let newAvPair = lookupAvatar();
+  let newAvURL = newAvPair[0];
+  let newAvName = newAvPair[1];
+  nextAvatarElement.src = newAvURL;
+  nextAvatarElement.alt = newAvName;
+  curAvatarElement.classList.remove('forceShow');
+  curAvatarElement.classList.add('hideMe');
+  nextAvatarElement.classList.add('showMe');
+  nextAvatarElement.classList.remove('forceHide');
+  setTimeout(resetAvatarAnim, 1000);
+}
 
+function resetAvatarAnim(){
+  curAvatarElement.src = nextAvatarElement.src;
+  curAvatarElement.alt = nextAvatarElement.alt;
+  curAvatarElement.classList.remove('hideMe');
+  curAvatarElement.classList.add('forceShow');
+  nextAvatarElement.classList.remove('showMe');
+  nextAvatarElement.classList.add('forceHide');
+  avatarName = curAvatarElement.alt;
+  avatarURL = curAvatarElement.src;
+  saveAvatarName();
+  saveAvatarURL();
+}
 
 //adding points below the header avatar
 var getAvatar = document.getElementById('avatar');
@@ -89,6 +142,40 @@ function generateImage(targetImage) {
     var characterAvatar = document.getElementById('bigCharacter');
     characterAvatar.appendChild(img);
   }
+}
+
+function lookupAvatar() {
+  let tempAv = 'img/sick-girl.png';
+  let tempName = 'Peasant';
+  if (currentPoints < 10){
+    tempAv = 'img/sick-girl.png';
+    tempName = 'Peasant';
+  } else if (currentPoints < 20) {
+    tempAv = 'img/farmer.png';
+    tempName = 'Farmer';
+  } else if (currentPoints < 50) {
+    tempAv = 'img/masterfarmer.png';
+    tempName = 'Master Farmer';
+  } else if (currentPoints < 100) {
+    tempAv = 'img/artist.png';
+    tempName = 'Craftsperson';
+  } else if (currentPoints < 200) {
+    tempAv = 'img/leader.png';
+    tempName = 'Artisan';
+  } else if (currentPoints < 400) {
+    tempAv = 'img/king.png';
+    tempName = 'Lord';
+  } else if (currentPoints < 1000) {
+    tempAv = 'img/magician.png';
+    tempName = 'Mage';
+  } else if (currentPoints < 2500) {
+    tempAv = 'img/queen.png';
+    tempName = 'Royalty';
+  } else {
+    tempAv = 'img/zeus.png';
+    tempName = 'God';
+  }
+  return [tempAv,tempName];
 }
 
 function characterAvatar() {
