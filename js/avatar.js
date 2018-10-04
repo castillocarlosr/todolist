@@ -74,13 +74,13 @@ function characterAvatar() {
     } else if (currentPoints < 200) {
       generateImage('img/leader.png');
     } else if (currentPoints < 400) {
-      generateImage('img/lord.png');
+      generateImage('img/king.png');
     } else if (currentPoints < 1000) {
       generateImage('img/magician.png');
     } else if (currentPoints < 2500) {
       generateImage('img/queen.png');
     } else {
-      generateImage('img/zues.png');
+      generateImage('img/zeus.png');
     }
   }
 }
