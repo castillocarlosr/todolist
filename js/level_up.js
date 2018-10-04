@@ -17,7 +17,7 @@ new Character('leader', 'img/leader.png');
 new Character('king', 'img/king.png');
 new Character('magicain', 'img/magician.png');
 new Character('queen', 'img/queen.png');
-new Character('zues', 'img/zues.png');
+new Character('zeus', 'img/zeus.png');
 
 var picture1 = document.getElementById('slideimg0');
 var picture2 = document.getElementById('slideimg1');
