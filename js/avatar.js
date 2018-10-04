@@ -70,7 +70,7 @@ function userCurrentClass() {
   if (oldClass !== avatarClass) {
     levelUpClass();
     levelUpAvatar();
-    //levelUpFireworks();
+    levelUpFireworks();
   }
 }
 
