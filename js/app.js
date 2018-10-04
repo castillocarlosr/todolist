@@ -524,6 +524,7 @@ function repopulateDailies() {
     }
   }
   localStorage.setItem('tasks', JSON.stringify(currentTasks));
+  saveDate(getDate());
   generateTasks();
   renderDaily();
 }
