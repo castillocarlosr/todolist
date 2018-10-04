@@ -94,6 +94,10 @@ a:hover {
   text-align: center;
 }
 
+#logo img {
+  width: 100%;
+}
+
 input[type=checkbox]:checked + span{
   text-decoration: line-through;
 }
@@ -134,7 +138,7 @@ span + p {
 #dailies {
   background-color: #b9abaa;
   box-shadow: 5px 10px 5px #272f3d;
-  float:left;
+  display: inline-block;
   margin-left: 20px;
   margin-top: 20px;
   padding: 20px;
