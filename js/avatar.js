@@ -113,25 +113,25 @@ function characterNext() {
     if (currentPoints < 10){
       avatarNext = 'Farmer';
       points = 10 - currentPoints;
-    } else if (10 <= currentPoints < 20) {
+    } else if (currentPoints < 20) {
       avatarNext = 'Master Farmer';
       points = 20 - currentPoints;
-    } else if (20 <= currentPoints < 50) {
+    } else if (currentPoints < 50) {
       avatarNext = 'Craftsperson';
       points = 50 - currentPoints;
-    } else if (50 <= currentPoints < 100) {
+    } else if (currentPoints < 100) {
       avatarNext = 'Artisan';
       points = 100 - currentPoints;
-    } else if (100 <= currentPoints < 200) {
+    } else if (currentPoints < 200) {
       avatarNext = 'Lord';
       points = 200 - currentPoints;
-    } else if (200 <= currentPoints < 400) {
+    } else if (currentPoints < 400) {
       avatarNext = 'Mage';
       points = 400 - currentPoints;
-    } else if (400 <= currentPoints < 1000) {
+    } else if (currentPoints < 1000) {
       avatarNext = 'Royalty';
       points = 1000 - currentPoints;
-    } else if (1000 <= currentPoints < 2500) {
+    } else if (currentPoints < 2500) {
       avatarNext = 'God';
       points = 2500 - currentPoints;
     } else {
