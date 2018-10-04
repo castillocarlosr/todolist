@@ -19,8 +19,9 @@ This app was written in HTML, CSS, and Javascript only.
 
 - Repo set-up on September 28, 2018
 - ~~Last update on October 01, 2018~~
-- ~~Last update on October 02, 2013~~
-- Last update on October 03, 2018
+- ~~Last update on October 02, 2018~~
+- ~~Last update on October 03, 2018~~
+- Last update on October 04, 2018
 
 ## Authors
 
