@@ -109,28 +109,28 @@ span + p {
 
 #avatar {
   float: left;
-  padding: 30px;
+  padding: 0px;
   text-align: center;
 }
 
 #avatar img {
   margin: 10px 0;
   position: absolute;
-  top: 60px;
-  left: 100px;
+  top: 70px;
+  left: 135px;
   width: 100px;
 }
 
 #avatar p:first-child {
   position: absolute;
-  left: 120px;
+  left: 140px;
   top: 20px;
 }
 
 #displayedPoints {
   position: absolute;
-  left: 120px;
-  top: 40px;
+  left: 138px;
+  top: 45px;
 }
 
 #quote {
