@@ -82,11 +82,13 @@ a:hover {
   color: #5063a1;
 }
 
+#logo {
+  clear:both;
+}
+
 #fireSentence {
-  position: absolute;
-  top: 40px;
-  right: 120px;
-  width: 130px;
+  float: right;
+  width: 100px;
 }
 
 #fireSentence button {

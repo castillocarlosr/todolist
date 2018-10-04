@@ -1,10 +1,19 @@
 'use strict';
 
+var avatarDom = document.getElementById('avatar');
 var userName = localStorage.getItem('name');
+var getFireworks = document.getElementById('fireSentence');
 var avatarClass = 'Peasant';
 var currentPoints = 0;
 loadCurrentPoints();
+loadClassName();
 
+function loadClassName() {
+  let className = localStorage.getItem('class');
+  if (className){
+    avatarClass = className;
+  }
+}
 //figures out the current class of user
 function userCurrentClass() {
   if (currentPoints < 10){
@@ -26,12 +35,33 @@ function userCurrentClass() {
   } else {
     avatarClass = 'God';
   }
-  console.log('I am a ' + avatarClass);
+
+  var oldClass = localStorage.getItem('class');
+  if (oldClass !== avatarClass) {
+    levelUpClass();
+    // levelUpAvatar();
+    levelUpFireworks();
+
+  }
+}
+
+function levelUpClass(){
   localStorage.setItem('class', avatarClass);
   let currentClassElement = document.getElementById('currentClass');
-  console.log(currentClassElement);
   currentClassElement.innerHTML = avatarClass;
 }
+
+function levelUpFireworks() {
+  document.getElementById('fireSentence').classList.add('fire');
+  console.log(document.getElementById('fireSentence'));
+  setTimeout(fireOff(), 2000);
+}
+
+function fireOff () {
+  document.getElementById('fireSentence').classList.remove('fire');
+}
+
+
 
 //adding points below the header avatar
 var getAvatar = document.getElementById('avatar');
@@ -85,8 +115,8 @@ function characterAvatar() {
   }
 }
 
-//adding character name to character page
-//userName = a variable to hold the users name and store in local storage.
+// adding character name to character page
+// userName = a variable to hold the users name and store in local storage.
 function characterName() {
   var characterName = document.getElementById('characterName');
   if (characterName) {
