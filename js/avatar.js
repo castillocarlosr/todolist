@@ -3,7 +3,6 @@
 var curAvatarElement = document.getElementById('slideimg0');
 var nextAvatarElement = document.getElementById('slideimg1');
 var userName = localStorage.getItem('name');
-var getFireworks = document.getElementById('fireSentence');
 var avatarClass = 'Peasant';
 var avatarName = 'Peasant';
 var avatarURL = 'img/sick-girl.png';
@@ -82,7 +81,6 @@ function levelUpClass(){
 
 function levelUpFireworks() {
   document.getElementById('fireSentence').classList.add('fire');
-  console.log(document.getElementById('fireSentence'));
   setTimeout(fireOff, 4000);
 }
 
