@@ -300,5 +300,23 @@ span + p {
   -o-transition: opacity 2s linear;
   transition: opacity 2s linear;
 }
-.showMe {opacity: 1;}
-
+.showMe {
+  opacity: 1;
+  -webkit-transition: opacity 1s linear;
+  -moz-transition: opacity 1s linear;
+  -o-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+}
+.hideMe {
+  opacity: 0;
+  -webkit-transition: opacity 1s linear;
+  -moz-transition: opacity 1s linear;
+  -o-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+}
+.forceShow {
+  opacity: 1;
+}
+.forceHide {
+  opacity: 0;
+}
