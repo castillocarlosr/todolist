@@ -13,6 +13,8 @@ var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
 var todoModal = document.getElementById('todoModal');
 var dailyFieldset = document.getElementById('dailyFeildset');
+var dailyWarn = document.getElementById('dailyWarning');
+var todoWarn = document.getElementById('todoWarning');
 //var recentDate = localStorage.getItem('date');
 //var recentDay = recentDate.getDate();
 var currentPoints = 0;
@@ -60,17 +62,20 @@ function saveCurrentPoints(){
 }
 function addTask(taskName, taskDescript, taskType, dueDate, pointValue) {
   //check for uniqueness for all tasks, regardless of type
-  let index = getTaskIndexByName(taskName);
-  let bIndexCollision = !(index || index === 0);
-  if (bIndexCollision) {
-    new Task(taskName, taskDescript, taskType, dueDate, pointValue);
-    localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
-  }
-  else {
+  if(taskName){
+    let index = getTaskIndexByName(taskName);
+    let bIndexCollision = !(index || index === 0);
+    if (bIndexCollision) {
+      new Task(taskName, taskDescript, taskType, dueDate, pointValue);
+      localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
+    }
+    else {
     //How do we need to handle duplicate task names?
-    console.log('Task name already in use, use something else');
+      console.log('Task name already in use, use something else');
+    }
+    return bIndexCollision;
   }
-  return bIndexCollision;
+  return false;
 }
 
 function getTaskIndexByName(taskName) {
@@ -213,11 +218,14 @@ function updateDaily(event) {
   }
   let bTaskAdded = addTask(newDailyTaskName, '', 'daily', 'end of day today', taskPoints);
   if(bTaskAdded){
+    dailyWarn.style.display = 'none';
+    dailyWarn.innerHTML = '';
     dailyModal.style.display = 'none';
     renderDaily();
   }
   else{
-    //TODO: make some warning that a task with that name exists
+    dailyWarn.style.display = 'block';
+    dailyWarn.innerHTML = 'Please enter a new daily task name.';
   }
 }
 
@@ -249,11 +257,14 @@ function updateToDo(event) {
   }
   let bTaskAdded = addTask(newTodoTaskName, newTodoTaskDesc, 'toDo', taskDueDate, taskPoints);
   if(bTaskAdded){
+    todoWarn.style.display = 'none';
+    todoWarn.innerHTML = '';
     todoModal.style.display = 'none';
     renderToDo();
   }
   else{
-    //TODO: make some warning that a task with that name exists
+    todoWarn.style.display = 'block';
+    todoWarn.innerHTML = 'Please enter a new to-do task name.';
   }
 }
 
