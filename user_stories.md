@@ -26,10 +26,6 @@
 
 * As developers we want to add form buttons under the todolist form users to create a new task with.
 
-* As developers we want to add suggestions for how to get started in the footers.
-
-* As developers we want to color code our todolist.
-
 * As developers we want to integrate a calender element into our code to add time and due date to users tasks.
 
 * As developers we want a user form that takes as input, task name, decsription, due date, and difficulty.
