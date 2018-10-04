@@ -83,8 +83,9 @@ a:hover {
 }
 
 #fireSentence {
-  float: right;
-  padding-top: 100px;
+  position: absolute;
+  top: 40px;
+  right: 120px;
   width: 130px;
 }
 
