@@ -3,6 +3,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: x-large;
   margin:auto;
+  overflow: auto !important;
   width: 90%;
   overflow: scroll;
 }
@@ -23,8 +24,8 @@ header nav li {
 
 main {
   background-color: #b4b28c;
-  min-height: 1500px;
-  overflow: scroll;
+  min-height: 600px;
+  overflow: hidden;
 }
 
 legend {
@@ -144,7 +145,6 @@ span + p {
   float:left;
   margin-left: 20px;
   margin-top: 20px;
-  overflow: scroll;
   padding: 20px;
   width: 43%;
 }
@@ -166,7 +166,6 @@ span + p {
   float:right;
   margin-right: 20px;
   margin-top: 20px;
-  overflow: scroll;
   padding: 20px;
   width: 43%;
 }

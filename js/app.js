@@ -575,13 +575,13 @@ function changePic() {
 }
 
 
-function run() {
-  if (currentPoints === 10) {
-    changePic();
-  }
-  else {
+// function run() {
+//   if (currentPoints === 10) {
+//     changePic();
+//   }
+//   else {
 
-  }
-}
+//   }
+// }
 
-run();
+// run();
