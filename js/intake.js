@@ -17,7 +17,6 @@ function intakeHandler(event) {
 //display intake form
 function displayIntake () {
   var result = localStorage.getItem('name');
-  console.log(result);
   if (result) {
     intakeModal.style.display = 'none';
   }

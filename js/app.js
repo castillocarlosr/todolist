@@ -1,7 +1,5 @@
 'use strict';
 
-//Removes the fireworks at start-up
-
 var lastLookedAtName = '';
 
 var addDaily = document.getElementById('dailyForm');
@@ -12,11 +10,8 @@ var dailyListHead = document.getElementById('dailyLegend');
 var todoListHead = document.getElementById('todoLegend');
 var dailyModal = document.getElementById('dailyModal');
 var todoModal = document.getElementById('todoModal');
-var dailyFieldset = document.getElementById('dailyFeildset');
 var dailyWarn = document.getElementById('dailyWarning');
 var todoWarn = document.getElementById('todoWarning');
-//var recentDate = localStorage.getItem('date');
-//var recentDay = recentDate.getDate();
 var currentPoints = 0;
 
 
@@ -70,7 +65,6 @@ function addTask(taskName, taskDescript, taskType, dueDate, pointValue) {
       localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
     }
     else {
-    //How do we need to handle duplicate task names?
       console.log('Task name already in use, use something else');
     }
     return bIndexCollision;
@@ -88,7 +82,6 @@ function getTaskIndexByName(taskName) {
 
 function updateTask(taskName, taskDescript, taskType, dueDate, pointValue, newName) {
   let index = getTaskIndexByName(taskName);
-  console.log('attempting to update index ' + index);
   let bUpdatedTask = (index || index === 0);
   if (bUpdatedTask) {
     if (newName) {
@@ -101,7 +94,6 @@ function updateTask(taskName, taskDescript, taskType, dueDate, pointValue, newNa
     localStorage.setItem('tasks', JSON.stringify(Task.allTasks));
   }
   else {
-    //How do we need to handle updating a non-existent task?
     console.log('Task does not exist; try adding a task with that name instead');
   }
   return bUpdatedTask;
@@ -154,9 +146,6 @@ function renderDaily() {
       inputElement.setAttribute('value', Task.allTasks[i].name);
       inputElement.addEventListener('click', checkboxHandler);
     }
-    else {
-      console.log('Not a daily task - type is: ' + Task.allTasks[i].taskType);
-    }
   }
 }
 renderDaily();
@@ -180,9 +169,6 @@ function renderToDo() {
       inputElement.setAttribute('type', 'checkbox');
       inputElement.setAttribute('value', Task.allTasks[i].name);
       inputElement.addEventListener('click', checkboxHandler);
-    }
-    else {
-      console.log('Not a toDo task - type is: ' + Task.allTasks[i].taskType);
     }
   }
 }
@@ -232,9 +218,6 @@ function updateDaily(event) {
 // //  change the object to delete the list & add the new update list.
 addDaily.addEventListener('submit', updateDaily);
 
-
-
-
 //need a handler to update non-daily To Do list
 //  change the object to delete the list & add the new update list.
 function updateToDo(event) {
@@ -270,31 +253,9 @@ function updateToDo(event) {
 
 addToDo.addEventListener('submit', updateToDo);
 
-
-// function for adding fireworks then setting timer to remove
-//if points = 5, 10, 15, 20....false  else true
-// function myFunction(true) {
-//   setTimeout(function(){ alert("Hello"); }, 3000);
-// else{
-//   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
-// var sheetParent = sheetToBeRemoved.parentNode;
-// sheetParent.removeChild(sheetToBeRemoved);
-// }
-// }
-// var levelPoint = 11;
-
-// if (levelPoint<5 || levelPoint>5 || levelPoint>10) {
-//   var sheetToBeRemoved = document.getElementById('fireworksOnOff');
-//   var sheetParent = sheetToBeRemoved.parentNode;
-//   sheetParent.removeChild(sheetToBeRemoved);
-// }
-
-
-
 //event handler when a checkbox is clicked
 
 function checkboxHandler() {
-
   for (var i = 0; i < Task.allTasks.length; i++) {
     if (this.value === Task.allTasks[i].name) {
       var changePoints = document.getElementById('displayedPoints');
@@ -414,7 +375,7 @@ function updateCurrentTask() {
     renderDaily();
   }
   else{
-    //TODO: write behavior for trying to update a non-existent task 
+    //TODO: write behavior for trying to update a non-existent task
   }
 }
 
@@ -511,14 +472,12 @@ function compareDateToSaved(){
   var currentDate = getDate();
   var savedDate = localStorage.getItem('date');
   savedDate = JSON.parse(savedDate);
-  console.log('compareDateToSaved resulted in ' + (currentDate === savedDate));
   return (currentDate === savedDate);
 }
 
 function checkIfNewDate(){
   forceDateExistence();
   if(!compareDateToSaved()){
-    console.log('date mismatch, calling repopulateDailies');
     repopulateDailies();
   }
 }
@@ -527,9 +486,7 @@ checkIfNewDate();
 function repopulateDailies() {
   var tasks = localStorage.getItem('tasks');
   var currentTasks = JSON.parse(tasks);
-  console.log(currentTasks);
   for (var i=0; i < currentTasks.length; i++) {
-    console.log(currentTasks[i].taskType + ' ' + currentTasks[i].completionState);
     if (currentTasks[i].taskType === 'daily') {
       currentTasks[i].completionState = 'open';
     }
@@ -539,61 +496,3 @@ function repopulateDailies() {
   generateTasks();
   renderDaily();
 }
-
-
-// if (currentDate !== recentDay) {
-//   repopulateDailies();
-// }
-
-
-
-function changePic() {
-  var timer = setInterval(nextImage, 2000);
-  var curImage = 0;
-  var numImages = 2;
-
-
-  function nextImage() {
-    var pic;
-    // remove showMe class from current image
-    pic = document.getElementById('slideimg' + curImage);
-    removeClass(pic, '');
-
-    // compute next image
-    curImage++;
-    // if (curImage > numImages - 1) {
-    //     curImage = 0;
-    // }
-
-    // add showMe class to next image
-
-    pic = document.getElementById('slideimg' + curImage);
-    addClass(pic, 'showMe');
-    pic2 = document.getElementById('slideimg0');
-    removeClass(pic2, 'showMe');
-  }
-
-  function addClass(elem, name) {
-    var change = elem.className;
-    if (change) change += ' '; // if not blank, add a space separator
-    change += name;
-    elem.className = change;
-  }
-
-  function removeClass(elem, name) {
-    var change = elem.className;
-    elem.className = change.replace(name, '').replace(/ {3}/g, ' ').replace(/^ | $/g, ''); // remove name and extra blanks
-  }
-}
-
-
-// function run() {
-//   if (currentPoints === 10) {
-//     changePic();
-//   }
-//   else {
-
-//   }
-// }
-
-// run();
