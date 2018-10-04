@@ -302,17 +302,17 @@ span + p {
 }
 .showMe {
   opacity: 1;
-  -webkit-transition: opacity 1s linear;
-  -moz-transition: opacity 1s linear;
-  -o-transition: opacity 1s linear;
-  transition: opacity 1s linear;
+  -webkit-transition: opacity 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -moz-transition: opacity 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -o-transition: opacity 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: opacity 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 .hideMe {
   opacity: 0;
-  -webkit-transition: opacity 1s linear;
-  -moz-transition: opacity 1s linear;
-  -o-transition: opacity 1s linear;
-  transition: opacity 1s linear;
+  -webkit-transition: opacity 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -moz-transition: opacity 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -o-transition: opacity 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: opacity 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 .forceShow {
   opacity: 1;
