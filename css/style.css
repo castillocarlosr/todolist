@@ -222,6 +222,26 @@ span + p {
   width: 100%;
 }
 
+#dailyWarning {
+  color: #DD0000;
+  display: none;
+  font-family: 'Nothing You Could Do', cursive; 
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-bottom: 2px;
+  padding-top: 4px;
+}
+
+#todoWarning {
+  color: #DD0000;
+  display: none;
+  font-family: 'Nothing You Could Do', cursive; 
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-bottom: 2px;
+  padding-top: 4px;
+}
+
 .clear {
   clear:both;
 }
