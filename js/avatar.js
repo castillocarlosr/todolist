@@ -83,7 +83,7 @@ function levelUpClass(){
 function levelUpFireworks() {
   document.getElementById('fireSentence').classList.add('fire');
   console.log(document.getElementById('fireSentence'));
-  setTimeout(fireOff, 2000);
+  setTimeout(fireOff, 4000);
 }
 
 function fireOff () {
