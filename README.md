@@ -48,4 +48,4 @@ Special thanks to all the TA's that helped throughout the project week.
 Logo created by Lena Eivy using Photoshop.
 Favicon created by Carlos Castillo using iPhoto editor and converted to 'ico' format using ICO converter website.
 Pixel character made by Freepik from (http://www.flaticon.com) is licensed by CC 3.0 BY (https://creativecommons.org/licenses/by/3.0/)
-* CodeFellows Code201
+
